@@ -1,0 +1,14 @@
+{
+  "name": "@potzblitz/example-solid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "solid-js": "^1.6.3",
+    "vite": "^3.2.5",
+    "vite-plugin-solid": "^2.4.0"
+  },
+  "scripts": {
+    "start": "vite --open"
+  }
+}
