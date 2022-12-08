@@ -55,5 +55,6 @@ This section outlines some thoughts and ideas for this project
 - SCSS Themeing
 - Plugin API to be able to add in middleware like functionality (e.g. websocket
   connector for controlling remote systems)
+- Track state for an undo/redo history
 
 ---
