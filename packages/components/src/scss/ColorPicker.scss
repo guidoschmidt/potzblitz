@@ -1,0 +1,55 @@
+@import "./Common";
+
+.color-picker {
+  --colorpicker--font: Monospace;
+  --colorpicker--size: 20px;
+  --colorpicker--padding: 10px;
+  --colorpicker--border-radius: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: 100%;
+  background: var(--button--color-background);
+  color: var(--button--color-foreground);
+
+  &:hover {
+    .color-preview-wrapper {
+      .color-preview {
+        transform: scale(1.2);
+        box-shadow: 0 3px 30px currentColor;
+      }
+    }
+  }
+
+  label {
+    @include LabelStyle(
+      var(--colorpicker--padding),
+      var(--colorpicker--font)
+    );
+  }
+
+  input {
+    display: none;
+  }
+
+  .color-preview-wrapper {
+    flex-grow: 1;
+    cursor: pointer;
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+    margin: 0;
+    .color-preview {
+      min-height: var(--colorpicker--size);
+      min-width: var(--colorpicker--size);
+      width: var(--colorpicker--size);
+      height: var(--colorpicker--size);
+      border-radius: var(--colorpicker--border-radius);
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 300ms ease, transform 300ms ease;
+    }
+  }
+}

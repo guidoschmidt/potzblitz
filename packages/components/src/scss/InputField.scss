@@ -1,0 +1,60 @@
+@import "./Common.scss";
+
+.input-field {
+  --input-field--font: Monospace;
+  --input-field--padding: 15px;
+  --input-field--color-background: #fafafa;
+
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: 100%;
+
+  input {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    flex-grow: 1;
+    align-self: stretch;
+    padding: var(--input-field--padding);
+    color: var(--color-text);
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    &:active,
+    &:focus {
+      border: 0;
+      outline: 0;
+    }
+  }
+
+  .step-button {
+    max-width: 30px;
+  }
+
+  input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    width: 10ch;
+    text-align: center;
+    font-size: var(--font-size);
+    font-family: var(--input-field--font);
+    background: var(--input-field--color-background);
+  }
+
+  input[type="text"] {
+    color: var(--color-text);
+    border-color: var(--color-text);
+    border-bottom: var(--text--border-width) solid var(--color-text);
+    font-size: var(--font-size);
+    font-family: var(--input-field--font);
+    background: var(--input-field--color-background);
+
+    &:focus {
+      border-bottom: var(--) solid currentColor;
+    }
+  }
+
+  label {
+    @include LabelStyle(var(--input-field--padding), var(--input-field--font));
+  }
+}

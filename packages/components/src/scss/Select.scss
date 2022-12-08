@@ -1,0 +1,59 @@
+@import "./Common.scss";
+
+.select {
+  --select--font: Monospace;
+  --select--padding: 10px;
+  --select--color-background: #fafafa;
+  --select--color-background-alternating: #efefef;
+
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: visible !important;
+  
+  label {
+    @include LabelStyle(var(--select--padding), var(--select--font));
+  }
+
+  .selected {
+    background: var(--select--color-background);
+    font-family: var(--select--font);
+    font-size: var(--font-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .options {
+    position: absolute;
+    display: block;
+    right: 10%;
+    width: 60%;
+    background: var(--select--color-background);
+    top: 100%;
+    z-index: +1;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    &.hidden {
+      display: none;
+    }
+
+    .option {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: var(--select--font);
+      padding: var(--select--padding);
+      &:nth-child(2n) {
+        background: var(--select--color-background-alternating);
+      }
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+}

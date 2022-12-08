@@ -1,0 +1,53 @@
+@import "./Common.scss";
+
+.potentiometer {
+  --potentiometer--color: #000;
+  --potentiometer--size: 30px;
+  --potentiometer--padding: 15px;
+  --potentiometer--font: Monospace;
+
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: 100%;
+
+  label {
+    @include LabelStyle(var(--potentiometer--padding),
+                        var(--potentiometer--font));
+  }
+
+  .knob-wrapper {
+    padding: var(--potentiometer--padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-grow: 1;
+    &:hover {
+      .knob {
+        cursor: grab;
+        .angle-indicator {
+          transform: translateY(7px);
+        }
+      }
+    }
+
+    .knob {
+      width: var(--potentiometer--size);
+      height: var(--potentiometer--size);
+      background: var(--potentiometer--color);
+      border-radius: var(--potentiometer--size);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .angle-indicator {
+        background: var(--potentiometer--color);
+        height: var(--potentiometer--size);
+        width: 5px;
+        transition: transform 200ms ease;
+        transform: translateY(3px);
+      }
+    }
+  }
+}
