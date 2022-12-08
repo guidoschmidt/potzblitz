@@ -56,5 +56,7 @@ This section outlines some thoughts and ideas for this project
 - Plugin API to be able to add in middleware like functionality (e.g. websocket
   connector for controlling remote systems)
 - Track state for an undo/redo history
+- Use decorators for specifying UI parameters (range of sliders, which UI
+  component to use, labels, etc.)
 
 ---
