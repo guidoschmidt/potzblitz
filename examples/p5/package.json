@@ -1,5 +1,5 @@
 {
-  "name": "p5",
+  "name": "@potzblitz/example-p5",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -10,6 +10,6 @@
     "@potzblitz/ui": "*"
   },
   "scripts": {
-    "start": "vite"
+    "start": "vite --open"
   }
 }
