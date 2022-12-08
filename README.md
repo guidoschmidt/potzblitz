@@ -30,7 +30,7 @@ const settings = {
     backgroundColor: "#eebe82",
     particleCount: 2000,
     randomize: () => randomizeParameters(),
-	download: () => downloadCanvas(),
+    download: () => downloadCanvas(),
 }
 
 new UI().build(settings);
