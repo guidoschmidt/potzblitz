@@ -4,7 +4,7 @@ import {
   Button,
   ColorPicker,
   Potentiometer,
-  // RangeSlider,
+  RangeSlider,
   Slider,
   Select,
   InputField,
@@ -50,20 +50,15 @@ class UiRoot {
   }
 
   hide(): void {
-    this._rootContainer.classList.toggle("hidden");
+    this._rootContainer.classList.add("hidden");
+  }
+
+  show(): void {
+    this._rootContainer.classList.remove("hidden");
   }
 
   clear() {
     this._rootContainer.innerHTML = "";
-  }
-
-  uuid() {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
-      (
-        c ^
-        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-      ).toString(16)
-    );
   }
 
   refresh() {
@@ -75,8 +70,16 @@ class UiRoot {
     this._mount.innerHTML = "";
   }
 
-  build(name: string, obj: object, root?: HTMLDivElement, changed?: Function) {
-    this._rootContainer = h("div.potzblitz.ui-root.potzblitz-theme");
+  build(
+    name: string,
+    obj: object,
+    root?: HTMLDivElement,
+    changed?: Function,
+    collapsed = false
+  ) {
+    this._rootContainer =
+      document.querySelector("div.potzblitz") ||
+      h("div.potzblitz.ui-root.potzblitz-theme");
     if (this._mount) {
       this._mount.appendChild(this._rootContainer);
     } else {
@@ -92,14 +95,11 @@ class UiRoot {
         if (type === "array") {
           this._rootCtx[arrayName][arrayIdx][propertyName] = v;
         }
-        // this.history.push({ diff: { name, v } });
-        // console.log(this.history);
         this._rootCtx["@change"] && this._rootCtx["@change"]();
       });
-      // this.addImportExportUi();
     }
     const properties = Object.getOwnPropertyNames(obj);
-    const [showGroup] = createSignal(true);
+    const [showGroup] = createSignal(!collapsed);
     const group = h(
       "div.ui-group",
       {
@@ -178,6 +178,11 @@ class UiRoot {
             break;
         }
       });
+    if (collapsed) this.hide();
+    const updateFn = (cb) => {
+      this._setRootCtxO(cb(this._rootCtx));
+    };
+    return updateFn;
   }
 
   addRangeSlider(
@@ -258,13 +263,13 @@ class UiRoot {
 
   addToggle(group: HTMLDivElement, label: string, value: boolean, ctx: object) {
     group.appendChild(
-      Toggle({ label, value, onupdate: this._setRootCtxO }, ctx)
+      Toggle({ label, value, onChange: this._setRootCtxO }, ctx)
     );
   }
 
   addText(group: HTMLDivElement, label: string, value: string, ctx: object) {
     group.appendChild(
-      InputField({ label, value, onupdate: this._setRootCtxO }, ctx)
+      InputField({ label, value, onChange: this._setRootCtxO }, ctx)
     );
   }
 

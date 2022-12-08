@@ -4,7 +4,7 @@ import { camelCaseWithSpaces, uniqueName, ToggleProps } from "../api";
 import { CopyValueButton } from "./blocks";
 import { createSignal } from "./reactive";
 
-export function Toggle({ label, value, ctx, onChange }: ToggleProps) {
+export function Toggle({ label, value, onChange }: ToggleProps, ctx) {
   const [idStr, _id] = uniqueName(label);
   const [vO, setVO] = createSignal(value);
 

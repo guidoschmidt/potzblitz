@@ -31,26 +31,30 @@ export default [
       format: "esm",
       name: "potzblitz",
     },
-    plugins: [esbuild(), resolve({ browser: true }), commonjs({}), scss({})],
+    plugins: [
+      esbuild(),
+      resolve({ browser: true }),
+      commonjs({}),
+      scss({
+        fileName: "potzblitz.css",
+      }),
+    ],
   },
-  // {
-  //   input: "src/index.ts",
-  //   output: {
-  //     file: "lib/index.umd.js",
-  //     format: "umd",
-  //     name: "potzblitz",
-  //   },
-  //   plugins: [
-  //     esbuild(),
-  //     resolve(),
-  //     commonjs({
-  //       include: "node_modules/**",
-  //       requireReturnsDefault: "auto",
-  //     }),
-  //     scss({
-  //       output: false,
-  //     }),
-  //   ],
-  // }
-  // ...themeBuildSteps,
+  {
+    input: "src/index.ts",
+    output: {
+      file: "lib/index.umd.js",
+      format: "umd",
+      name: "potzblitz",
+    },
+    plugins: [
+      esbuild(),
+      resolve({ browser: true }),
+      commonjs({}),
+      scss({
+        output: false,
+      }),
+    ],
+  },
+  ...themeBuildSteps,
 ];

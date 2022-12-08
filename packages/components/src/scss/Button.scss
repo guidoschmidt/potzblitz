@@ -1,10 +1,10 @@
 @mixin styled-button {
   --button--font-size: 1em;
   --button--font: Monospace;
-  --button--color-background: #000;
-  --button--color-foreground: #fff;
-  --button--color-hover-background: #fff;
-  --button--color-hover-foreground: #000;
+  --button--color-background: #fff;
+  --button--color-foreground: #000;
+  --button--color-hover-background: #000;
+  --button--color-hover-foreground: #fff;
   --button--padding: 10px;
   --button--border-radius: 0;
 

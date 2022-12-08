@@ -26,6 +26,7 @@
   flex-direction: row;
   flex-grow: 1;
   height: 100%;
+  gap: 10px;
 
   label {
     @include LabelStyle(var(--slider--padding), var(--slider--font));

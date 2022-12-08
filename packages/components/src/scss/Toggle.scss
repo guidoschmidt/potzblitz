@@ -21,10 +21,9 @@
   height: 100%;
 
   label {
-    @include LabelStyle(var(--toggle--padding),
-                        var(--toggle--font));
+    @include LabelStyle(var(--toggle--padding), var(--toggle--font));
   }
-  
+
   .knob {
     align-self: center;
     justify-self: center;
@@ -36,9 +35,8 @@
     transition: outline 50ms ease;
     cursor: pointer;
     border-radius: var(--toggle--radius);
-    margin: 8px 0;
-     border: var(--toggle--border-track-width) solid
-        var(--toggle--color-border);
+    margin: 8px 25ch 8px auto;
+    border: var(--toggle--border-track-width) solid var(--toggle--color-border);
     &:hover {
       background: var(--toggle--hover--color-background);
       .state {
@@ -55,8 +53,7 @@
       min-height: var(--toggle--size);
       border-radius: var(--toggle--knob-radius);
       background: var(--toggle--color-knob);
-      border: var(--toggle--border-knob-width) solid
-        var(--toggle--color-border);
+      border: var(--toggle--border-knob-width) solid var(--toggle--color-border);
       transition: transform 100ms ease, opacity 100ms linear,
         background 100ms linear, margin 150ms ease;
       margin-left: 0;

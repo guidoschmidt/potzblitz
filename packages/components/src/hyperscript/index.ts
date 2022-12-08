@@ -3,6 +3,7 @@ export * from "./ColorPicker";
 export * from "./Container";
 export * from "./InputField";
 export * from "./Potentiometer";
+export * from "./RangeSlider";
 export * from "./Select";
 export * from "./Slider";
 export * from "./Toggle";

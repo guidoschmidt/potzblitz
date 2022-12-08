@@ -15,7 +15,7 @@ function NumberInput(props) {
     h("input", {
       type: "number",
       id: props.id,
-      value: props.value,
+      value: parseFloat(props.value),
       oninput: props.handleInput,
       onblur: props.handleBlur,
     }),
@@ -40,14 +40,19 @@ export function InputField(props: InputFieldProps, ctx?: object) {
 
   return h("div.input-field", [
     h("label", camelCaseWithSpaces(props.label)),
-    isNaN(vO())
-      ? h(`input#${idStr}`, { type: "text", value: props.value, onchange })
+    typeof vO() === "string"
+      ? h(`input#${idStr}`, {
+          type: "text",
+          value: props.value,
+          onchange,
+        })
       : NumberInput({
           id: idStr,
-          value: vO,
+          value: parseFloat(vO()),
           hanldeInput: onchange,
+          handleBlur: onchange,
           onIncrease: () => {
-            setVO(vO() + props.step || 1);
+            setVO(parseFloat(vO()) + props.step || 1);
             const target: HTMLInputElement = document.querySelector(
               `#${idStr}`
             );
@@ -55,7 +60,7 @@ export function InputField(props: InputFieldProps, ctx?: object) {
             props.onChange && props.onChange(vO());
           },
           onDecrease: () => {
-            setVO(vO() - props.step || 1);
+            setVO(parseFloat(vO()) - props.step || 1);
             const target: HTMLInputElement = document.querySelector(
               `#${idStr}`
             );

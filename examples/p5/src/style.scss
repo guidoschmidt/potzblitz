@@ -1,0 +1,33 @@
+body {
+  display: grid;
+  grid-template-columns: auto 3fr;
+  margin: 0;
+  padding: 0;
+  background: #e9e9ee;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 30px;
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    canvas {
+      margin: 0;
+      padding: 0;
+      box-shadow: 0 10px 90px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+  }
+
+  .potzblitz {
+    position: inherit;
+    width: fit-content;
+    align-self: flex-start;
+    order: -1;
+    & > .visible {
+      min-height: 100vh;
+    }
+  }
+}

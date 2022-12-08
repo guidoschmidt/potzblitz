@@ -46,10 +46,12 @@ export function ColorPicker(props: ColorPickerProps, ctx?: object) {
       "label.color-preview-wrapper",
       { htmlFor: `${idStr}` },
       h("div.color-preview", {
-        style: { "background-color": props?.value || "#ff0000" },
+        style: {
+          "background-color": props?.value || "#ff0000",
+          color: vO,
+        },
       })
     ),
-    h("span.text-value", props.value),
     AdditionalValueInput({ value: vO }),
     CopyValueButton({ value: vO }),
   ]);
