@@ -1,4 +1,5 @@
-# [:warning: Pre-Alpha Prototype] Potzblitz
+##### :warning: Pre-Alpha Prototype
+# Potzblitz
 > Generative UI toolkit for generative projects
 
 ---
