@@ -1,0 +1,86 @@
+.potzblitz-theme {
+  --font: Monospace;
+  --font-size: 11px;
+
+  --border-radius: 8px;
+  --padding: 15px;
+
+  --color-background: #ffffff;
+  --color-text: #1f1f1f;
+
+  --color--hover-background: #232323;
+  --color--hover-text: #fcfcfc;
+
+  .group {
+    --group--color-background: #eeeeee;
+    --group--color-text: var(--color-text);
+  }
+
+  .button {
+    --button--color-background: var(--color-background);
+    --button--color-foreground: var(--color-text);
+    --button--color-hover-background: var(--color--hover-background);
+    --button--color-hover-foreground: var(--color-background);
+    --button--padding: 10px 20px;
+    --button--border-radius: var(--border-radius);
+  }
+
+  .input {
+    --input--padding: 4px;
+    --input--color-background: transparent;
+    --input--color-text: var(--color-text);
+  }
+
+  .slider {
+    --slider--color-background: var(--color-text);
+    --slider--color-foreground: var(--color-text);
+    --slider--color-knob: var(--color-background);
+    --slider--color-knob-border: var(--color-text);
+
+    --slider--knob-border-width: 2px;
+    --slider--knob-width: 20px;
+    --slider--knob-height: 20px;
+    --slider--knob-radius: 20px;
+
+    --slider--track-height: 2px;
+    --slider--track-radius: 0px;
+    --slider--track-border-width: 0px;
+    --slider--track-border-color: transparent;
+  }
+
+  .range-slider {
+    --slider--color-background: var(--color-text);
+    --slider--color-foreground: var(--color-text);
+    --slider--color-knob: var(--color-background);
+    --slider--color-knob-border: var(--color-text);
+
+    --slider--knob-border-width: 2px;
+    --slider--knob-width: 20px;
+    --slider--knob-height: 20px;
+    --slider--knob-radius: 20px;
+
+    --slider--track-height: 2px;
+    --slider--track-radius: 0px;
+    --slider--track-border-width: 0px;
+    --slider--track-border-color: transparent;
+  }
+
+  .toggle {
+    --toggle--color-background: #ececec;
+    --toggle--color-knob: var(--color-background);
+    --toggle--color-knob-border: var(--color-text);
+
+    --toggle--size: 20px;
+    --toggle--knob-border-width: 2px;
+    --toggle--radius: 20px;
+    --toggle--knob-radius: 100%;
+  }
+
+  .text {
+    --text--color-background: var(--color--hover-text);
+  }
+
+  .potentiometer {
+    --potentiometer--color: var(--color--hover-background);
+  }
+}
