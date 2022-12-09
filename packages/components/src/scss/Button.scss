@@ -1,4 +1,4 @@
-@mixin styled-button {
+.button {
   --button--font-size: 1em;
   --button--font: Monospace;
   --button--color-background: #fff;
@@ -16,7 +16,6 @@
   background: var(--button--color-background);
   color: var(--button--color-foreground);
   border: 0;
-  font-size: var(--font-size);
   margin: 0;
   padding: var(--button--padding);
   border-radius: var(--button--border-radius);
@@ -36,8 +35,4 @@
     border: 0;
     outline: 0;
   }
-}
-
-.button {
-  @include styled-button;
 }

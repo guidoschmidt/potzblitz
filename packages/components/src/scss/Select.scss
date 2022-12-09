@@ -2,6 +2,7 @@
 
 .select {
   --select--font: Monospace;
+  --select--font-size: 1rem;
   --select--padding: 10px;
   --select--color-background: #fafafa;
   --select--color-background-alternating: #efefef;
@@ -13,6 +14,7 @@
   min-height: 100%;
   position: relative;
   overflow: visible !important;
+  font-size: var(--select--font-size);
   
   label {
     @include LabelStyle(var(--select--padding), var(--select--font));
@@ -21,11 +23,11 @@
   .selected {
     background: var(--select--color-background);
     font-family: var(--select--font);
-    font-size: var(--font-size);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    cursor: pointer;
   }
 
   .options {
@@ -47,6 +49,7 @@
       align-items: center;
       font-family: var(--select--font);
       padding: var(--select--padding);
+      cursor: pointer;
       &:nth-child(2n) {
         background: var(--select--color-background-alternating);
       }

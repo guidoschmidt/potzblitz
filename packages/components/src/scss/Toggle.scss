@@ -58,7 +58,7 @@
         background 100ms linear, margin 150ms ease;
       margin-left: 0;
       &.on {
-        transform: translateX(60%);
+        transform: translateX(calc(100% - var(--toggle--border-knob-width)));
       }
     }
   }
