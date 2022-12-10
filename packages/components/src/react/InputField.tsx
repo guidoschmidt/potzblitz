@@ -3,7 +3,7 @@ import "../scss/InputField.scss";
 
 export function InputField() {
   return (
-    <div class="input-field">
+    <div class="inputfield">
       <input class="input" name="" type="text" value="" />
       <button class="button copy-value">●</button>
     </div>

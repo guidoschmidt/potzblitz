@@ -38,7 +38,7 @@ export function InputField(props: InputFieldProps, ctx?: object) {
     setVO(target.value);
   };
 
-  return h("div.input-field", [
+  return h("div.inputfield", [
     h("label", camelCaseWithSpaces(props.label)),
     typeof vO() === "string"
       ? h(`input#${idStr}`, {

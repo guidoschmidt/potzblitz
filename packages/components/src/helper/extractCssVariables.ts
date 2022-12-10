@@ -5,11 +5,11 @@
       variableMap[entry.name] = [];
       const scssSrc = await Deno.readTextFile(`./src/scss/${entry.name}`);
       const lines = scssSrc.split("\n");
+      console.log(entry.name.replace(".scss", "").toLowerCase());
       const filtered = lines.filter((line: string) => line.includes(" --"));
       variableMap[entry.name] = filtered;
     }
   }
-  console.log(variableMap);
   const scssSource = `.potzblitz {
 ${Object.keys(variableMap)
   .map((key) => {

@@ -1,6 +1,7 @@
 @import "./Common.scss";
 
-.input-field {
+.inputfield {
+  --input-field--font-size: 1rem;
   --input-field--font: Monospace;
   --input-field--padding: 10px;
   --input-field--color-background: #fafafa;
@@ -36,7 +37,7 @@
     -moz-appearance: textfield;
     width: 10ch;
     text-align: center;
-    font-size: var(--font-size);
+    font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
     background: var(--input-field--color-background);
   }
@@ -45,7 +46,7 @@
     color: var(--color-text);
     border-color: var(--color-text);
     border-bottom: var(--text--border-width) solid var(--color-text);
-    font-size: var(--font-size);
+    font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
     background: var(--input-field--color-background);
 

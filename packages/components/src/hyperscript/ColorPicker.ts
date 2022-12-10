@@ -35,7 +35,7 @@ export function ColorPicker(props: ColorPickerProps, ctx?: object) {
     preview.style.backgroundColor = vO() as string;
   };
 
-  return h("div.color-picker", [
+  return h("div.colorpicker", [
     props.label && h("label", camelCaseWithSpaces(props.label)),
     h(`input#${idStr}.input`, {
       type: "color",
