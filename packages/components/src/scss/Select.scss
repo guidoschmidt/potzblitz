@@ -50,6 +50,9 @@
       font-family: var(--select--font);
       padding: var(--select--padding);
       cursor: pointer;
+      &.hidden {
+        display: none;
+      }
       &:nth-child(2n) {
         background: var(--select--color-background-alternating);
       }
