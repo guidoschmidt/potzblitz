@@ -23,7 +23,7 @@ export function ColorPicker(props: ColorPickerProps) {
   };
 
   return [
-    <div class="color-picker">
+    <div class="colorpicker">
       {mprops.label && <label>{mprops.label}</label>}
       <input id={idStr} type="color" value={vO()} onInput={handleColorChange} />
       <label class="color-preview-wrapper" htmlFor={idStr}>
