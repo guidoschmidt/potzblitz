@@ -23,9 +23,11 @@ export interface ColorPickerProps extends ComponentProps {
 
 export interface InputFieldProps extends ComponentProps {
   value?: string | number;
+  min?: number;
+  max?: number;
   step?: number;
-  onChange?: (c: string) => void;
-  onBlur?: (c: string) => void;
+  onChange?: (v: string | number) => void;
+  onBlur?: (v: string | number) => void;
 }
 
 export interface PotentiometerProps extends SliderPros {}
