@@ -64,8 +64,11 @@ export function InputField(props: InputFieldProps) {
     mprops.onBlur && mprops.onBlur(vO());
   };
 
+  const clamp = (v: number, min: number, max: number): number =>
+    Math.min(Math.max(v, min), max);
+
   return (
-    <div class="input-field" ref={inputFieldRef}>
+    <div class="inputfield" ref={inputFieldRef}>
       {mprops.label && <label>{mprops.label}</label>}
       {isNaN(vO()) ? (
         <TextInput
@@ -83,11 +86,11 @@ export function InputField(props: InputFieldProps) {
           }
           handleBlur={handleBlur}
           onIncrease={() => {
-            setVO(vO() + 1);
+            setVO(clamp(vO() + 1, mprops.min, mprops.max));
             mprops.onChange && mprops.onChange(vO());
           }}
           onDecrease={() => {
-            setVO(vO() - 1);
+            setVO(clamp(vO() - 1, mprops.min, mprops.max));
             mprops.onChange && mprops.onChange(vO());
           }}
         />
