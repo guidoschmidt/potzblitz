@@ -1,4 +1,4 @@
-import React from "https://cdn.skypack.dev/react";
+import React from "react";
 import "../scss/Button.scss";
 
 export function Button() {

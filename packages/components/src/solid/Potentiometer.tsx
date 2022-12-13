@@ -6,7 +6,7 @@ import {
   onCleanup,
   createEffect,
 } from "solid-js";
-import { PotentiometerProps } from "../api";
+import { PotentiometerProps, uniqueName } from "../api";
 import { CopyValueButton, AdditionalValueInput } from "./blocks";
 
 export function Potentiometer(props: PotentiometerProps) {
@@ -16,6 +16,7 @@ export function Potentiometer(props: PotentiometerProps) {
     props
   );
 
+  const [idStr, _id] = uniqueName(mprops.label);
   const [vO, setVO] = createSignal(mprops.value % 100.0);
   const [isDragging, setIsDragging] = createSignal(false);
 
@@ -36,7 +37,7 @@ export function Potentiometer(props: PotentiometerProps) {
       ((Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI)) / 3.6
     );
     setVO(angle);
-    mprops.onUpdate(angle);
+    mprops.onUpdate && mprops.onUpdate(angle);
   };
 
   const onPointerDown = () => setIsDragging(true);
@@ -80,8 +81,8 @@ export function Potentiometer(props: PotentiometerProps) {
   });
 
   return (
-    <div class="potentiometer">
-      {mprops.label && <label>{mprops.label}</label>}
+    <div class="potentiometer" id={idStr}>
+      {mprops.label && <label for={idStr}>{mprops.label}</label>}
       <div
         class="knob-wrapper"
         ref={knobWrapperRef}
