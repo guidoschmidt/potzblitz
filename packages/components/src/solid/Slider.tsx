@@ -12,6 +12,7 @@ export function Slider(props: SliderPros) {
       step: 1,
       onUpdate: () => {},
       onBlur: () => {},
+      showCopyButton: false,
     },
     props
   );
@@ -44,7 +45,7 @@ export function Slider(props: SliderPros) {
         onPointerUp={(e: InputEvent) => mprops.onBlur(handleInput(e))}
       />
       <AdditionalValueInput value={vO()} />
-      <CopyValueButton value={vO()} />
+      {mprops.showCopyButton && <CopyValueButton value={vO()} />}
     </div>
   );
 }
