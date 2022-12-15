@@ -1,6 +1,7 @@
 export interface ComponentProps {
   label?: string;
   disabled?: boolean;
+  showCopyButton?: boolean;
 }
 
 export interface SliderProps extends ComponentProps {
