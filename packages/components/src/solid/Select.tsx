@@ -23,14 +23,14 @@ export function Select<T>(props: SelectProps<T>) {
         {mprops.options[vO()]}
       </div>
       <div classList={{ options: true, hidden: !showOptions() }}>
-        <For each={mprops.options} fallback={<></>}>
+        <For
+          each={mprops.options.filter((o) => o !== mprops.options[vO()])}
+          fallback={<></>}
+        >
           {(option: T, _: () => number) => {
             return (
               <div
-                classList={{
-                  option: true,
-                  hidden: option === mprops.options[vO()],
-                }}
+                classList={{ option: true }}
                 onclick={() => handleSelect(option)}
               >
                 {option}

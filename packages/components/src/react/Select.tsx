@@ -21,19 +21,15 @@ export function Select<T>(props: SelectProps<T>) {
         {props.options[vO]}
       </div>
       <div className={["options", !showOptions && "hidden"].join(" ")}>
-        {props.options.map((option: T) => {
-          return (
-            <div
-              className={[
-                "option",
-                option === props.options[vO] && "hidden",
-              ].join(" ")}
-              onClick={() => handleSelect(option)}
-            >
-              {option}
-            </div>
-          );
-        })}
+        {props.options
+          .filter((o) => o !== props.options[vO])
+          .map((option: T) => {
+            return (
+              <div className="option" onClick={() => handleSelect(option)}>
+                {option}
+              </div>
+            );
+          })}
       </div>
     </div>
   );
