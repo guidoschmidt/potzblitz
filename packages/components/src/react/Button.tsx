@@ -1,6 +1,11 @@
-import React from "https://cdn.skypack.dev/react";
 import "../scss/Button.scss";
+import React from "react";
+import { ButtonProps, camelCaseWithSpaces } from "../api";
 
-export function Button() {
-  return <button className="button">Button</button>;
+export function Button(props: ButtonProps) {
+  return (
+    <button className="button" onClick={props.onClick}>
+      {camelCaseWithSpaces(props.label ?? "Button")}
+    </button>
+  );
 }

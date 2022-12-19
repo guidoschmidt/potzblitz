@@ -1,14 +1,10 @@
 import "../scss/ColorPicker.scss";
 import { mergeProps, createSignal, createEffect } from "solid-js";
-import { uniqueName } from "../api/utils";
-import { ColorPickerProps } from "../api/types";
+import { ColorPickerProps, uniqueName } from "../api";
 import { CopyValueButton } from "./blocks";
 
 export function ColorPicker(props: ColorPickerProps) {
-  const mprops = mergeProps<ColorPickerProps>(
-    { value: "#fff", onSelect: () => {} },
-    props
-  );
+  const mprops = mergeProps({ value: "#888", onSelect: () => {} }, props);
   const [idStr, _id] = uniqueName(props.label);
   const [vO, setVO] = createSignal<string>(mprops.value);
 
@@ -24,7 +20,7 @@ export function ColorPicker(props: ColorPickerProps) {
 
   return [
     <div class="colorpicker">
-      {mprops.label && <label>{mprops.label}</label>}
+      {mprops.label && <label for={idStr}>{mprops.label}</label>}
       <input id={idStr} type="color" value={vO()} onInput={handleColorChange} />
       <label class="color-preview-wrapper" htmlFor={idStr}>
         <div

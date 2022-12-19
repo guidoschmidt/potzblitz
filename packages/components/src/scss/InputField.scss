@@ -5,11 +5,11 @@
   --input-field--font: Monospace;
   --input-field--padding: 10px;
   --input-field--color-background: #fafafa;
+  --input-field--color-foreground: #000;
 
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  height: 100%;
 
   input {
     background: transparent;
@@ -18,7 +18,7 @@
     flex-grow: 1;
     align-self: stretch;
     padding: var(--input-field--padding);
-    color: var(--color-text);
+    color: var(--input-field--color-foreground);
     -webkit-appearance: none;
     -moz-appearance: textfield;
     &:active,
@@ -43,9 +43,9 @@
   }
 
   input[type="text"] {
-    color: var(--color-text);
-    border-color: var(--color-text);
-    border-bottom: var(--text--border-width) solid var(--color-text);
+    color: var(--input-field--color-foreground);
+    border-color: var(--input-field--color-foreground);
+    border-bottom: var(--text--border-width) solid var(--input-field--color-foreground);
     font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
     background: var(--input-field--color-background);

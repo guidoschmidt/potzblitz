@@ -1,29 +1,34 @@
 import "../scss/InputField.scss";
 import { mergeProps, createSignal, createEffect } from "solid-js";
-import { uniqueName, InputFieldProps } from "../api";
+import {
+  uniqueName,
+  InputFieldProps,
+  NumberInputFieldProps,
+  TextInputFieldProps,
+} from "../api";
 import { CopyValueButton } from "./blocks";
 
-function NumberInput(props) {
+function NumberInput(props: NumberInputFieldProps) {
   return (
     <>
-      <button class="button step-button" onClick={props.onDecrease}>
+      <button class="button step-button" onClick={props.handleDecrease}>
         -
       </button>
       <input
         type="number"
         id={props.id}
         value={props.value}
-        onInput={props.handleInput}
-        onBlur={props.handleBlur}
+        onInput={props.onInput}
+        onBlur={props.onBlur}
       />
-      <button class="button step-button" onClick={props.onIncrease}>
+      <button class="button step-button" onClick={props.handleIncrease}>
         +
       </button>
     </>
   );
 }
 
-function TextInput(props) {
+function TextInput(props: TextInputFieldProps) {
   return (
     <input
       class="input"
@@ -38,7 +43,14 @@ function TextInput(props) {
 
 export function InputField(props: InputFieldProps) {
   const mprops: InputFieldProps = mergeProps(
-    { value: "", onChange: () => {}, onBlur: () => {} },
+    {
+      value: "",
+      onChange: () => {},
+      onBlur: () => {},
+      step: 1,
+      min: -Infinity,
+      max: +Infinity,
+    },
     props
   );
   const [idStr, _id] = uniqueName(mprops.label);
@@ -50,14 +62,13 @@ export function InputField(props: InputFieldProps) {
     setVO(mprops.value);
   });
 
-  const handleInput = (e: InputEvent) => {
-    const target = e.target as HTMLInputElement;
-    setVO(target.value);
-    return target.value;
+  const handleInput = (v: number | string) => {
+    setVO(v);
+    return v;
   };
 
-  const handleChange = (newV: any) => {
-    mprops.onChange && mprops.onChange(newV);
+  const handleChange = (newV: number | string) => {
+    mprops.onInput && mprops.onInput(newV);
   };
 
   const handleBlur = () => {
@@ -70,32 +81,40 @@ export function InputField(props: InputFieldProps) {
   return (
     <div class="inputfield" ref={inputFieldRef}>
       {mprops.label && <label>{mprops.label}</label>}
-      {isNaN(vO()) ? (
+      {typeof mprops.value === "string" ? (
         <TextInput
           id={idStr}
-          value={vO()}
-          handleInput={handleInput}
+          value={vO() as string}
+          handleInput={(e: InputEvent) => {
+            const target = e.target as HTMLInputElement;
+            handleInput(String(target.value));
+          }}
           handleBlur={handleBlur}
         />
       ) : (
         <NumberInput
           id={idStr}
-          value={vO()}
-          handleInput={(e: InputEvent) =>
-            handleChange(parseFloat(handleInput(e)))
-          }
-          handleBlur={handleBlur}
-          onIncrease={() => {
-            setVO(clamp(vO() + 1, mprops.min, mprops.max));
-            mprops.onChange && mprops.onChange(vO());
+          value={vO() as number}
+          handleInput={(e: InputEvent) => {
+            const target = e.target as HTMLInputElement;
+            handleChange(handleInput(parseFloat(target.value) as number));
           }}
-          onDecrease={() => {
-            setVO(clamp(vO() - 1, mprops.min, mprops.max));
-            mprops.onChange && mprops.onChange(vO());
+          handleBlur={handleBlur}
+          handleIncrease={() => {
+            setVO(
+              clamp((vO() as number) + mprops.step, mprops.min, mprops.max)
+            );
+            mprops.onInput && mprops.onInput(vO());
+          }}
+          handleDecrease={() => {
+            setVO(
+              clamp((vO() as number) - mprops.step, mprops.min, mprops.max)
+            );
+            mprops.onInput && mprops.onInput(vO());
           }}
         />
       )}
-      <CopyValueButton value={vO()} />
+      {mprops.showCopyButton && <CopyValueButton value={vO()} />}
     </div>
   );
 }

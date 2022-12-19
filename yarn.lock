@@ -1376,14 +1376,22 @@
     "sass" "^1.55.0"
     "vite" "^3.1.8"
 
+"@potzblitz/example-react@file:/Users/gs/git/potzblitz/examples/react":
+  "resolved" "file:examples/react"
+  "version" "1.0.0"
+  dependencies:
+    "react" "^18.2.0"
+
 "@potzblitz/example-solid@file:/Users/gs/git/potzblitz/examples/solid":
   "resolved" "file:examples/solid"
   "version" "1.0.0"
   dependencies:
+    "@potzblitz/ui" "^0.0.8-alpha"
     "solid-js" "^1.6.3"
     "vite" "^3.2.5"
+    "vite-plugin-solid" "^2.4.0"
 
-"@potzblitz/ui@*", "@potzblitz/ui@file:/Users/gs/git/potzblitz/packages/uibuilder":
+"@potzblitz/ui@*", "@potzblitz/ui@^0.0.8-alpha", "@potzblitz/ui@file:/Users/gs/git/potzblitz/packages/uibuilder":
   "resolved" "file:packages/uibuilder"
   "version" "0.0.8-alpha"
   dependencies:
