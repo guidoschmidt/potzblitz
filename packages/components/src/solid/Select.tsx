@@ -16,11 +16,14 @@ export function Select<T>(props: SelectProps<T>) {
     setShowOptions(false);
   };
 
+  const appylDisplayFn = (o: T): string =>
+    mprops.displayFn !== undefined ? mprops.displayFn(o) : (o as string);
+
   return (
     <div class="select" id={idStr}>
       {props.label && <label for={idStr}>{mprops.label}</label>}
       <div class="selected" onClick={() => setShowOptions(!showOptions())}>
-        {mprops.options[vO()]}
+        {appylDisplayFn(mprops.options[vO()])}
       </div>
       <div classList={{ options: true, hidden: !showOptions() }}>
         <For
@@ -33,13 +36,13 @@ export function Select<T>(props: SelectProps<T>) {
                 classList={{ option: true }}
                 onclick={() => handleSelect(option)}
               >
-                {option}
+                {appylDisplayFn(option)}
               </div>
             );
           }}
         </For>
       </div>
-      <CopyValueButton value={vO()} />
+      {mprops.showCopyButton && <CopyValueButton value={vO()} />}
     </div>
   );
 }
