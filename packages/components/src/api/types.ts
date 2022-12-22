@@ -66,5 +66,5 @@ export interface SelectProps<T> extends ComponentProps {
   value?: number;
   options?: Array<T>;
   onSelect?: (idx: number) => void;
-  showOption?: (option: T) => string;
+  displayFn?: (o: T) => string;
 }
