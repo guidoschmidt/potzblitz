@@ -10,13 +10,13 @@
 
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   flex-grow: 1;
   height: 100%;
   min-height: 100%;
   position: relative;
   overflow: visible !important;
   font-size: var(--select--font-size);
-  color: var(--select--color-foreground);
   
   label {
     @include LabelStyle(var(--select--padding), var(--select--font));
@@ -29,15 +29,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-grow: 1;
     cursor: pointer;
+    padding: var(--select--padding);
   }
 
   .options {
+    color: var(--select--color-foreground);
     position: absolute;
     display: block;
     right: 10%;
-    width: 60%;
     background: var(--select--color-background);
     top: 100%;
     z-index: +1;
