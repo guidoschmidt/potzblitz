@@ -2,6 +2,8 @@ export interface ComponentProps {
   label?: string;
   disabled?: boolean;
   showCopyButton?: boolean;
+  // @TODO How to differentiate between class & classList?
+  classList?: object;
 }
 
 export interface SliderProps extends ComponentProps {
