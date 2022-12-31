@@ -1,6 +1,6 @@
 import "../scss/Toggle.scss";
 import { camelCaseWithSpaces, ToggleProps } from "../api";
-import { createSignal, mergeProps } from "solid-js";
+import { createSignal, mergeProps, createEffect } from "solid-js";
 
 export function Toggle(props: ToggleProps) {
   const mprops: ToggleProps = mergeProps(
@@ -9,6 +9,10 @@ export function Toggle(props: ToggleProps) {
   );
 
   const [vO, setVO] = createSignal(props.value);
+
+  createEffect(() => {
+    setVO(mprops.value);
+  });
 
   const handleSwitch = () => {
     const newValue = !vO();

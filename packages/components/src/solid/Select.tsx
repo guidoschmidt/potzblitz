@@ -1,6 +1,6 @@
 import "../scss/Select.scss";
 import { SelectProps, uniqueName } from "../api";
-import { For, mergeProps, createSignal } from "solid-js";
+import { For, mergeProps, createSignal, createEffect } from "solid-js";
 import { CopyValueButton } from "./blocks";
 
 export function Select<T>(props: SelectProps<T>) {
@@ -8,6 +8,10 @@ export function Select<T>(props: SelectProps<T>) {
   const [idStr, _id] = uniqueName(mprops.label);
   const [vO, setVO] = createSignal<number>(mprops.value);
   const [showOptions, setShowOptions] = createSignal(false);
+
+  createEffect(() => {
+    setVO(mprops.value);
+  });
 
   const handleSelect = (option: T) => {
     const idx = mprops.options.indexOf(option);
