@@ -79,7 +79,10 @@ export function InputField(props: InputFieldProps) {
     Math.min(Math.max(v, min), max);
 
   return (
-    <div class="inputfield" ref={inputFieldRef}>
+    <div
+      classList={{ inputfield: true, ...mprops.classList }}
+      ref={inputFieldRef}
+    >
       {mprops.label && <label>{mprops.label}</label>}
       {typeof mprops.value === "string" ? (
         <TextInput

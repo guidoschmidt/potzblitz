@@ -18,8 +18,8 @@ export function Select<T>(props: SelectProps<T>) {
     <div className="select" id={idStr}>
       {props.label && <label htmlFor={idStr}>{props.label}</label>}
       <div className="selected" onClick={() => setShowOptions(!showOptions)}>
-        {props.showOption
-          ? props.showOption(props.options[vO])
+        {props.displayFn
+          ? props.displayFn(props.options[vO])
           : props.options[vO]}
       </div>
       <div className={["options", !showOptions && "hidden"].join(" ")}>
@@ -32,7 +32,7 @@ export function Select<T>(props: SelectProps<T>) {
                 className="option"
                 onClick={() => handleSelect(option)}
               >
-                {props.showOption ? props.showOption(option) : option}
+                {props.displayFn ? props.displayFn(option) : option}
               </div>
             );
           })}

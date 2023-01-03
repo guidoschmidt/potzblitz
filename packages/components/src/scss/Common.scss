@@ -1,10 +1,13 @@
 @mixin LabelStyle($padding, $font) {
+  --label-width: 30ch;
+
   font-family: $font;
   margin-right: 10px;
   text-transform: uppercase;
-  width: 20ch;
+  width: var(--label-width);
   display: flex;
   align-items: center;
   padding: $padding;
   align-self: stretch;
+  margin-right: 40px;
 }

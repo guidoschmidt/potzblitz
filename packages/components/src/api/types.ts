@@ -2,6 +2,8 @@ export interface ComponentProps {
   label?: string;
   disabled?: boolean;
   showCopyButton?: boolean;
+  // @TODO How to differentiate between class & classList?
+  classList?: object;
 }
 
 export interface SliderProps extends ComponentProps {
@@ -64,5 +66,5 @@ export interface SelectProps<T> extends ComponentProps {
   value?: number;
   options?: Array<T>;
   onSelect?: (idx: number) => void;
-  showOption?: (option: T) => string;
+  displayFn?: (o: T) => string;
 }
