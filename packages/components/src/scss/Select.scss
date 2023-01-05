@@ -49,7 +49,7 @@
 
     .option {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       font-family: var(--select--font);
       padding: var(--select--padding);

@@ -65,6 +65,6 @@ export interface ToggleProps extends ComponentProps {
 export interface SelectProps<T> extends ComponentProps {
   value?: number;
   options?: Array<T>;
-  onSelect?: (idx: number) => void;
+  onSelect?: (option: T, idx: number) => void;
   displayFn?: (o: T) => string;
 }

@@ -9,7 +9,7 @@ export function Select<T>(props: SelectProps<T>) {
 
   const handleSelect = (option: T) => {
     const idx = props.options.indexOf(option);
-    props.onSelect && props.onSelect(idx);
+    props.onSelect && props.onSelect(option, idx);
     setVO(idx);
     setShowOptions(false);
   };
