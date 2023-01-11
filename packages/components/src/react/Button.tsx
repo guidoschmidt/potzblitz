@@ -4,7 +4,11 @@ import { ButtonProps, camelCaseWithSpaces } from "../api";
 
 export function Button(props: ButtonProps) {
   return (
-    <button className="button" onClick={props.onClick}>
+    <button
+      className="button"
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {camelCaseWithSpaces(props.label ?? "Button")}
     </button>
   );

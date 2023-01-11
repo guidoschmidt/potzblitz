@@ -36,4 +36,13 @@
     border: 0;
     outline: 0;
   }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+    &:hover {
+      background: var(--button--color-background) !important;
+      color: var(--button--color-foreground) !important;
+    }
+  }
 }
