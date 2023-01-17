@@ -1,14 +1,4 @@
 {
   "name": "root",
-  "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
-  "devDependencies": {
-    "lerna": "^6.1.0"
-  },
-  "scripts": {
-    "viz": "npx nx graph"
-  }
+  "private": false
 }
