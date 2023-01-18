@@ -1,7 +1,6 @@
 {
   "name": "@potzblitz/components",
   "version": "0.0.0",
-  "main": "index.js",
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
   "license": "MIT",
   "dependencies": {
