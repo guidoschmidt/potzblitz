@@ -1,4 +1,7 @@
 {
   "name": "root",
-  "private": false
+  "dependencies": {
+    "yarn": "^1.22.19"
+  },
+  "packageManager": "yarn@3.3.1"
 }
