@@ -1,13 +1,17 @@
 .button {
-  --button--font-size: 1em;
+  --button--font-size: 0.6rem;
   --button--font: Monospace;
-  --button--color-background: #fff;
-  --button--color-foreground: #000;
-  --button--color-hover-background: #000;
-  --button--color-hover-foreground: #fff;
+  --button--color-border: var(--potzblitz--color-foreground);
+  --button--color-background: var(--potzblitz--color-background);
+  --button--color-foreground: var(--potzblitz--color-foreground);
+  --button--color-hover-background: var(--potzblitz--color-foreground);
+  --button--color-hover-foreground: var(--potzblitz--color-background);
   --button--padding: 10px;
+
+  --button--border-width: 0;
   --button--border-radius: 0;
 
+  width: 100%;
   cursor: pointer;
   font-family: var(--button--font);
   font-size: var(--button--font-size);
@@ -19,7 +23,7 @@
   margin: 0;
   padding: var(--button--padding);
   border-radius: var(--button--border-radius);
-  transition: background 200ms ease, color 200ms ease;
+  border: var(--button--border-width) solid var(--button--color-border);
   align-self: stretch;
   justify-self: stretch;
   display: flex;

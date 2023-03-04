@@ -44,8 +44,9 @@ function TextInput(props: TextInputFieldProps) {
 export function InputField(props: InputFieldProps) {
   const mprops: InputFieldProps = mergeProps(
     {
+      label: "",
       value: "",
-      onChange: () => {},
+      onInput: () => {},
       onBlur: () => {},
       step: 1,
       min: -Infinity,

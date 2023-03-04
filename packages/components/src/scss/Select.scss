@@ -2,11 +2,11 @@
 
 .select {
   --select--font: Monospace;
-  --select--font-size: 1rem;
+  --select--font-size: auto;
   --select--padding: 10px;
-  --select--color-background: #fafafa;
-  --select--color-foreground: #000;
-  --select--color-background-alternating: #efefef;
+  --select--color-background: var(--potzblitz--color-background);
+  --select--color-foreground: var(--potzblitz--color-foreground);
+  --select--color-background-alternating: var(--potzblitz--color-background);
 
   display: flex;
   flex-direction: row;
@@ -48,6 +48,7 @@
     }
 
     .option {
+      min-width: 50px;
       display: flex;
       justify-content: flex-start;
       align-items: center;

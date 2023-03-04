@@ -71,7 +71,3 @@ export function InputField(props: InputFieldProps, ctx?: object) {
     CopyValueButton({ value: vO }),
   ]);
 }
-
-//
-//
-//

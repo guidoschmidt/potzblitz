@@ -1,7 +1,7 @@
 @import "./Common.scss";
 
 .potentiometer {
-  --potentiometer--color: #000;
+  --potentiometer--color: var(--potzblitz--color-foreground);
   --potentiometer--size: 30px;
   --potentiometer--padding: 15px;
   --potentiometer--font: Monospace;

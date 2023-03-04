@@ -6,18 +6,18 @@
 
 .slider {
   --slider--font: Monospace;
-  --slider--padding: 15px;
+  --slider--padding: 10px;
 
-  --slider--color-track: #000;
-  --slider--color-knob: #000;
-  --slider--color-knob-border: #000;
+  --slider--color-track: var(--potzblitz--color-foreground);
+  --slider--color-knob: var(--potzblitz--color-foreground);
+  --slider--color-knob-border: var(--potzblitz--color-foreground);
 
-  --slider--knob-border-width: 2px;
-  --slider--knob-width: 20px;
+  --slider--knob-border-width: 1px;
+  --slider--knob-width: 16px;
   --slider--knob-height: var(--slider--knob-width);
   --slider--knob-radius: var(--slider--knob-width);
 
-  --slider--track-height: 2px;
+  --slider--track-height: 1px;
   --slider--track-radius: 0px;
   --slider--track-border-width: 0px;
   --slider--track-border-color: transparent;

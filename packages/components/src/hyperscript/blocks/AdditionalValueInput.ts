@@ -1,6 +1,6 @@
-import "../../scss/blocks/AdditionalValueInput.scss";
+import "../../scss/blocks/ValueView.scss";
 import h from "hyperscript";
 
 export function AdditionalValueInput(props: { value: any }) {
-  return h("span.additional-value-input", {}, props.value);
+  return h("span.value-view", {}, props.value);
 }

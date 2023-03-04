@@ -1,6 +1,6 @@
 @mixin LabelStyle($padding, $font) {
   --label-width: 30ch;
-
+  font-size: 0.6rem;
   font-family: $font;
   margin-right: 10px;
   text-transform: uppercase;

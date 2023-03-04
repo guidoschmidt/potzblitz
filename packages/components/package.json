@@ -4,6 +4,8 @@
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
   "license": "MIT",
   "dependencies": {
+    "@thi.ng/api": "^8.7.2",
+    "@thi.ng/atom": "^5.1.31",
     "@types/uuid": "^8.3.4",
     "hyperscript": "^2.0.2",
     "p5": "^1.5.0",

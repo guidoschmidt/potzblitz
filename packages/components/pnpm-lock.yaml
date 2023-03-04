@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@thi.ng/api': ^8.7.2
+  '@thi.ng/atom': ^5.1.31
   '@types/uuid': ^8.3.4
   hyperscript: ^2.0.2
   p5: ^1.5.0
@@ -9,6 +11,8 @@ specifiers:
   uuid: ^9.0.0
 
 dependencies:
+  '@thi.ng/api': 8.7.2
+  '@thi.ng/atom': 5.1.31
   '@types/uuid': 8.3.4
   hyperscript: 2.0.2
   p5: 1.5.0
@@ -17,6 +21,48 @@ dependencies:
   uuid: 9.0.0
 
 packages:
+
+  /@thi.ng/api/8.7.2:
+    resolution: {integrity: sha512-DyzLbm0Wk8/R9EyStXTyPBlfHum2SmYcs0RnClmwhxqX0fg2rkqLOBg10t4YiskEND0qTUuSLyTaS37RVvybew==}
+    engines: {node: '>=12.7'}
+    dev: false
+
+  /@thi.ng/atom/5.1.31:
+    resolution: {integrity: sha512-8zEfdN6WLfZGVgRsXGtiuE4g3kW5OR5PX0WfeoQ4QAgpdn/J0OussvrUV1b/ARfLwSlYZi98nO+N1jQRVIq1UQ==}
+    engines: {node: '>=12.7'}
+    dependencies:
+      '@thi.ng/api': 8.7.2
+      '@thi.ng/equiv': 2.1.19
+      '@thi.ng/errors': 2.2.11
+      '@thi.ng/paths': 5.1.31
+      tslib: 2.5.0
+    dev: false
+
+  /@thi.ng/checks/3.3.9:
+    resolution: {integrity: sha512-ihbfYU9xgSsUVXbRzmGDmee3cgTbPV7SOzVGE2sC99LRu6BA+Y/sqXp47qd8rpHM0bJcMvw4ywF6ZXk1jcByxA==}
+    engines: {node: '>=12.7'}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@thi.ng/equiv/2.1.19:
+    resolution: {integrity: sha512-4jaqs/V48s+r/w2QNQhIxPek3R9P2CVHnWw/FIfKRyOVs/PUIlWcaQcT57x5Cj/BtHUiDssPTw1074aVSgdFaw==}
+    engines: {node: '>=12.7'}
+    dev: false
+
+  /@thi.ng/errors/2.2.11:
+    resolution: {integrity: sha512-wsX2BJ4aLqI4+dbvZXjzJ4sezMuO+Vy2TORs6MzWCYMM/+qq/Fii3XCMSjXo7S89dTHBN8XR1KrwGpTAhd/A8A==}
+    engines: {node: '>=12.7'}
+    dev: false
+
+  /@thi.ng/paths/5.1.31:
+    resolution: {integrity: sha512-V6TtuP3rxgs5KsmiTRBvK79p44sP3xcyxAEurtnqHIxEyqPwhlm31QQ/9xI1PNTTBJCzji8PKWbRwdH6wTWq8g==}
+    engines: {node: '>=12.7'}
+    dependencies:
+      '@thi.ng/api': 8.7.2
+      '@thi.ng/checks': 3.3.9
+      '@thi.ng/errors': 2.2.11
+    dev: false
 
   /@types/uuid/8.3.4:
     resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
@@ -87,6 +133,10 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /tslib/2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
     dev: false
 
   /uuid/9.0.0:

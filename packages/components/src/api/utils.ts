@@ -5,7 +5,7 @@ export function camelCaseWithSpaces(str: string) {
   return str.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 }
 
-export function uniqueName(label: string) {
+export function uniqueName(label?: string) {
   const id = v4();
   const properLabel = (label || "component").replace(" ", "-").toLowerCase();
   return [`${properLabel}-${id}`, id];

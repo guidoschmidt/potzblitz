@@ -2,45 +2,43 @@
 
 .toggle {
   --toggle--font: Monospace;
-  --toggle--padding: 15px;
-  --toggle--color-background: #000;
-  --toggle--color-knob: #fff;
-  --toggle--color-border: #000;
-  --toggle--hover--color-background: #fff;
-  --toggle--hover--color-knob: #000;
-  --toggle--hover--color-border: #fff;
+  --toggle--padding: 10px;
+
+  --toggle--color-on: #000;
+  --toggle--color-off: #eee;
+  --toggle--color-hover: #aaa;
+
   --toggle--size: 15px;
-  --toggle--border-knob-width: 2px;
-  --toggle--border-track-width: 2px;
-  --toggle--radius: 20px;
+  --toggle--radius: 15px;
   --toggle--knob-radius: 100%;
 
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   flex-grow: 1;
   height: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: visible !important;
+  font-size: var(--select--font-size);
 
   label {
     @include LabelStyle(var(--toggle--padding), var(--toggle--font));
   }
 
-  .knob {
+  .input-wrapper {
     align-self: center;
     justify-self: center;
-    min-width: calc(2 * var(--toggle--size));
-    min-height: var(--toggle--size);
-    background: var(--toggle--color-background);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     display: flex;
-    width: fit-content;
     transition: outline 50ms ease;
     cursor: pointer;
     border-radius: var(--toggle--radius);
-    margin: 8px 25ch 8px auto;
-    border: var(--toggle--border-track-width) solid var(--toggle--color-border);
     &:hover {
-      background: var(--toggle--hover--color-background);
       .state {
-        background: var(--toggle--hover--color-knob);
+        opacity: 0.5;
       }
     }
 
@@ -52,13 +50,11 @@
       min-width: var(--toggle--size);
       min-height: var(--toggle--size);
       border-radius: var(--toggle--knob-radius);
-      background: var(--toggle--color-knob);
-      border: var(--toggle--border-knob-width) solid var(--toggle--color-border);
-      transition: transform 100ms ease, opacity 100ms linear,
-        background 100ms linear, margin 150ms ease;
-      margin-left: 0;
       &.on {
-        transform: translateX(calc(100% - var(--toggle--border-knob-width)));
+        background: var(--toggle--color-on);
+      }
+      &.off {
+        background: var(--toggle--color-off);
       }
     }
   }

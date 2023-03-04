@@ -1,13 +1,11 @@
 import "../scss/Slider.scss";
 import h from "hyperscript";
-import { camelCaseWithSpaces, SliderPros } from "../api";
+import { camelCaseWithSpaces, SliderProps } from "../api";
 import { createSignal } from "./reactive";
 import { CopyValueButton, AdditionalValueInput } from "./blocks";
 
-export function Slider(props: SliderPros, ctx?: object) {
-  const [vO, setVO] = createSignal(
-    parseFloat(`${props.value}` || "0.0").toFixed(3)
-  );
+export function Slider(props: SliderProps, ctx?: object) {
+  const [vO, setVO] = createSignal(parseFloat(`${props.value}` || "0.0"));
 
   vO((v: number) => {
     if (ctx) ctx[props.label] = v;

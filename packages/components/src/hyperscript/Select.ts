@@ -12,7 +12,7 @@ export function Select<T>(props: SelectProps<T>, ctx?: object): HTMLElement {
 
   const handleSelect = (e: PointerEvent) => {
     const target = e.target as HTMLDivElement;
-    const selectedValue = target.innerText;
+    const selectedValue = parseInt(target.innerText);
     setVO(selectedValue);
     setShowOptionsO(false);
     if (ctx) ctx[props.label] = selectedValue;
