@@ -19,18 +19,25 @@
   .group {
     display: flex;
     flex-direction: column;
+    .entries {
+      margin-left: 20px;
+    }
     .group-name {
       font-size: 1.125em;
       cursor: pointer;
       font-weight: bold;
       text-transform: uppercase;
-      padding: 12px 10px;
+      padding: 10px 10px;
       display: flex;
       justify-content: stretch;
       align-items: stretch;
       width: 100%;
       background: var(--potzblitz--color-background);
       color: var(--potzblitz--color-foreground);
+      &:before {
+        content: "+";
+        margin-right: 10px;
+      }
     }
 
     &:not(.visible) {

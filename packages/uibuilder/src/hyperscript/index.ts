@@ -2,6 +2,7 @@ import h from "hyperscript";
 import {
   createSignal,
   Button,
+  ButtonPad,
   ColorPicker,
   Potentiometer,
   RangeSlider,
@@ -129,6 +130,7 @@ class UiRoot {
         const max = obj[`@${property}.max`] || 100;
         const step = obj[`@${property}.step`] || 1;
         const options = obj[`@${property}.options`] || [];
+        const layout = obj[`@${property}.layout`] || [1, 1];
         changed = obj[`@change`] || changed;
         const t = Array.isArray(value)
           ? "array"
@@ -173,6 +175,9 @@ class UiRoot {
           case "potentiometer":
             this.addPotentiometer(entries, property, value, obj, changed);
             break;
+          case "buttonpad":
+            this.addButtonPad(entries, property, value, layout, obj);
+            break;
           case "boolean":
             this.addToggle(entries, property, value, obj);
             break;
@@ -180,7 +185,9 @@ class UiRoot {
       });
     if (collapsed) this.hide();
     const updateFn = (cb) => {
-      this._setRootCtxO(cb(this._rootCtx));
+      // this._setRootCtxO(cb(this._rootCtx));
+      // this.refresh();
+      // console.log(this._rootCtxO());
     };
     return updateFn;
   }
@@ -204,6 +211,18 @@ class UiRoot {
         max,
         step,
       })
+    );
+  }
+
+  addButtonPad(
+    group: HTMLElement,
+    label: string,
+    value: number,
+    layout: [number, number],
+    ctx: object
+  ) {
+    group.appendChild(
+      ButtonPad({ label, value, layout, onUpdate: this._setRootCtxO }, ctx)
     );
   }
 
