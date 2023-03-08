@@ -1,1 +1,1 @@
-export * from "./AdditionalValueInput";
+export * from "./ValueView";
