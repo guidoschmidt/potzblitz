@@ -5,6 +5,7 @@ import { type View } from "@thi.ng/atom";
 interface hdomSelectProps<T> extends SelectProps<T> {
   value: View<T>;
   id: string;
+  style: object;
 }
 
 function Select<T>(props: hdomSelectProps<T>) {
@@ -37,6 +38,7 @@ function Select<T>(props: hdomSelectProps<T>) {
 
     return [
       "div.select",
+      { style: { ...props.style } },
       [props.label && ["label", camelCaseWithSpaces(props.label)]],
       ["div.selected", { onclick: toggleOptions }, props.value.deref()],
       [

@@ -1,16 +1,24 @@
 import "../scss/InputField.scss";
-import { camelCaseWithSpaces, InputFieldProps, uniqueName } from "../api";
+import { camelCaseWithSpaces, InputFieldProps } from "../api";
 import { type View } from "@thi.ng/atom";
 
-interface hdomInputFieldProps<T> extends InputFieldProps {
-  value: View<T>;
+interface hdomNumberInputFieldProps extends InputFieldProps {
+  value: View<number>;
+  style: object;
 }
 
-export function NumberInputField(props: hdomInputFieldProps<number>) {
+interface hdomStringInputFieldProps extends InputFieldProps {
+  value: View<string>;
+  style: object;
+}
+
+function NumberInputField(props: hdomNumberInputFieldProps) {
   return () => {
     const handleDecrease = () => {
-      const newValue = props.value.deref() - (props.step || 1);
-      props.onInput && props.onInput(newValue);
+      const value = props.value.deref() - (props.step || 1);
+      const div = props.step ? Math.pow(10, `${props.step}`.length - 1) : 1000;
+      const fixedValue = Math.floor(value * div) / div;
+      props.onInput && props.onInput(fixedValue);
     };
 
     const handleInput = (e: InputEvent) => {
@@ -20,12 +28,15 @@ export function NumberInputField(props: hdomInputFieldProps<number>) {
     };
 
     const handleIncrease = () => {
-      const newValue = props.value.deref() + (props.step || 1);
-      props.onInput && props.onInput(newValue);
+      const value = props.value.deref() + (props.step || 1);
+      const div = props.step ? Math.pow(10, `${props.step}`.length - 1) : 1000;
+      const fixedValue = Math.floor(value * div) / div;
+      props.onInput && props.onInput(fixedValue);
     };
 
     return [
       "div.inputfield",
+      { style: { ...props.style } },
       [props.label && ["label", camelCaseWithSpaces(props.label)]],
       ["button.button.step-button", { onclick: handleDecrease }, "-"],
       [
@@ -41,7 +52,7 @@ export function NumberInputField(props: hdomInputFieldProps<number>) {
   };
 }
 
-export function StringInputField(props: hdomInputFieldProps<string>) {
+function StringInputField(props: hdomStringInputFieldProps) {
   return () => {
     const handleInput = (e: InputEvent) => {
       const target = e.target as HTMLInputElement;
@@ -51,6 +62,7 @@ export function StringInputField(props: hdomInputFieldProps<string>) {
 
     return [
       "div.inputfield",
+      { style: { ...props.style } },
       [props.label && ["label", camelCaseWithSpaces(props.label)]],
       [
         `input`,
@@ -59,3 +71,5 @@ export function StringInputField(props: hdomInputFieldProps<string>) {
     ];
   };
 }
+
+export { NumberInputField, StringInputField };

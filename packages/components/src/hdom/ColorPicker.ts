@@ -6,6 +6,7 @@ import { camelCaseWithSpaces, ColorPickerProps } from "../api";
 interface hdomColorPickerProps extends ColorPickerProps {
   value: View<string>;
   id: string;
+  style: object;
 }
 
 function ColorPicker(props: hdomColorPickerProps) {
@@ -18,6 +19,7 @@ function ColorPicker(props: hdomColorPickerProps) {
 
     return [
       "div.colorpicker",
+      { style: { ...props.style } },
       [props.label && ["label", camelCaseWithSpaces(props.label)]],
       [
         `input#${props.id}.input`,

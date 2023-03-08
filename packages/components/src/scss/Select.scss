@@ -8,18 +8,17 @@
   --select--color-foreground: var(--potzblitz--color-foreground);
   --select--color-background-alternating: var(--potzblitz--color-background);
 
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   flex-grow: 1;
   height: 100%;
   min-height: 100%;
   position: relative;
   overflow: visible !important;
   font-size: var(--select--font-size);
+
+  @include ComponentLayout;
   
   label {
-    @include LabelStyle(var(--select--padding), var(--select--font));
+    @include LabelStyle;
   }
 
   .selected {
@@ -30,6 +29,7 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    width: 100%;
     cursor: pointer;
     padding: var(--select--padding);
   }

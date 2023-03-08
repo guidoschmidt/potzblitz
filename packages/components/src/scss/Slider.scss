@@ -22,14 +22,10 @@
   --slider--track-border-width: 0px;
   --slider--track-border-color: transparent;
 
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  height: 100%;
-  gap: 10px;
+  @include ComponentLayout;
 
   label {
-    @include LabelStyle(var(--slider--padding), var(--slider--font));
+    @include LabelStyle;
   }
 
   @mixin track {

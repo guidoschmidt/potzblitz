@@ -7,9 +7,7 @@
   --input-field--color-background: var(--potzblitz--color-background);
   --input-field--color-foreground: var(--potzblitz--color-foreground);
 
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+  @include ComponentLayout;
 
   input {
     background: transparent;
@@ -58,6 +56,6 @@
   }
 
   label {
-    @include LabelStyle(var(--input-field--padding), var(--input-field--font));
+    @include LabelStyle;
   }
 }

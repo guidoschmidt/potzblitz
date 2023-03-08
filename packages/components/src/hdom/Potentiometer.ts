@@ -6,6 +6,7 @@ import { type View } from "@thi.ng/atom";
 interface hdomPotentiometerProps extends PotentiometerProps {
   value: View<number>;
   id: string;
+  style: object;
 }
 
 function Potentiometer(props: hdomPotentiometerProps) {
@@ -27,8 +28,11 @@ function Potentiometer(props: hdomPotentiometerProps) {
       if (length < 5.0) return;
       const angle =
         Math.round((Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI)) /
-        360;
-      props.onUpdate && props.onUpdate(angle);
+        360.0;
+      // - 2 here to get rid of the '.'
+      const div = props.step ? Math.pow(10, `${props.step}`.length - 2) : 1000;
+      const fixedAngle = Math.floor(angle * div) / div;
+      props.onUpdate && props.onUpdate(fixedAngle);
     };
 
     const handlePointerUp = (_: PointerEvent) => {
@@ -38,6 +42,7 @@ function Potentiometer(props: hdomPotentiometerProps) {
 
     return [
       "div.potentiometer",
+      { style: { ...props.style } },
       props.label && ["label", camelCaseWithSpaces(props.label)],
       [
         `div#${props.id}.knob-wrapper`,

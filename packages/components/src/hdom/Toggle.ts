@@ -5,6 +5,7 @@ import { type View } from "@thi.ng/atom";
 interface hdomToggleProps extends ToggleProps {
   id: string;
   value: View<boolean>;
+  style: object;
 }
 
 function Toggle(props: hdomToggleProps) {
@@ -15,6 +16,7 @@ function Toggle(props: hdomToggleProps) {
 
     return [
       "div.toggle",
+      { style: { ...props.style } },
       props.label && ["label", {}, camelCaseWithSpaces(props.label)],
       [
         "div.input-wrapper",

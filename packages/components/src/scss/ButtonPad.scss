@@ -20,7 +20,7 @@
   gap: 10px;
 
   label {
-    @include LabelStyle(var(--buttonpad--padding), var(--buttonpad--font));
+    @include LabelStyle;
   }
 
   .pad {

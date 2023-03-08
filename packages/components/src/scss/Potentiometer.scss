@@ -6,14 +6,10 @@
   --potentiometer--padding: 15px;
   --potentiometer--font: Monospace;
 
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  height: 100%;
+  @include ComponentLayout;
 
   label {
-    @include LabelStyle(var(--potentiometer--padding),
-                        var(--potentiometer--font));
+    @include LabelStyle;
   }
 
   .knob-wrapper {

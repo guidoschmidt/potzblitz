@@ -1,12 +1,20 @@
 import "../scss/Button.scss";
 import { camelCaseWithSpaces, ButtonProps } from "../api";
 
-function Button(props: ButtonProps) {
+interface hdomBottonProps extends ButtonProps {
+  style: object;
+}
+
+function Button(props: hdomBottonProps) {
   return () => {
     return [
-      "button.button",
-      { onclick: props.onClick },
-      camelCaseWithSpaces(props.label ?? "Button"),
+      "div.button-wrapper",
+      { style: { ...props.style } },
+      [
+        "button.button",
+        { onclick: props.onClick },
+        camelCaseWithSpaces(props.label ?? "Button"),
+      ],
     ];
   };
 }
