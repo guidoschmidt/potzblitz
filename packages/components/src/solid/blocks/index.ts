@@ -1,2 +1,2 @@
 export * from "./CopyValueButton";
-export * from "./AdditionalValueInput";
+export * from "./ValueView";
