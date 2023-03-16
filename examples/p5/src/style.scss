@@ -1,3 +1,5 @@
+@use "@potzblitz/ui/src/styles/index.scss";
+
 body {
   display: grid;
   grid-template-columns: auto 3fr;
@@ -18,16 +20,6 @@ body {
       padding: 0;
       box-shadow: 0 10px 90px rgba(0, 0, 0, 0.2);
       border-radius: 4px;
-    }
-  }
-
-  .potzblitz {
-    position: inherit;
-    width: fit-content;
-    align-self: flex-start;
-    order: -1;
-    & > .visible {
-      min-height: 100vh;
     }
   }
 }

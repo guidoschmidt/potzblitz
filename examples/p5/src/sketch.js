@@ -1,6 +1,5 @@
 import p5 from "p5";
-import { UiRoot } from "@potzblitz/ui";
-import "@potzblitz/ui/lib/potzblitz.css";
+import { Potzblitz } from "@potzblitz/ui/src/hdom";
 import "./style.scss";
 
 const settings = {
@@ -12,28 +11,27 @@ const settings = {
   ["@foregroundColor.component"]: "color",
   foregroundColor: "#eee9fc",
   ["@balance.component"]: "potentiometer",
+  ["@balance.step"]: 1,
+  ["@balance.min"]: 0,
+  ["@balance.max"]: 0,
   balance: 50,
   tileCount: 30,
+  ["@strokeWidth.component"]: "slider",
   ["@strokeWidth.min"]: 1,
   ["@strokeWidth.max"]: 20,
-  ["@strokeWidth.component"]: "slider",
+  ["@strokeWidth.step"]: 0.1,
   strokeWidth: 5,
   invert: false,
-  ["@strokeRange.component"]: "range",
-  ["@strokeRange.min"]: 0,
-  ["@strokeRange.max"]: 1,
-  ["@strokeRange.step"]: 0.001,
-  strokeRange: {
-    low: 0.5,
-    high: 0.7,
-  },
   ["@rotation.component"]: "slider",
   ["@rotation.min"]: 0,
   ["@rotation.max"]: 360,
+  ["@rotation.layout"]: "span 2",
   rotation: 0,
+  ["@passpartout.columns"]: 1,
   passpartout: {
     ["@color.component"]: "color",
     color: "#3e16a3",
+    ["@border.columns"]: 1,
     border: {
       ["@left.component"]: "slider",
       left: 100,
@@ -52,21 +50,16 @@ const settings = {
   fullscreenCanvas: () => {
     document.querySelector("canvas").requestFullscreen();
   },
+  ["@download.layout"]: "span 2",
   download: () => sketch.saveCanvas(`${Date.now()}`, "png"),
 };
 
-const ui = new UiRoot();
+const potzblitz = new Potzblitz(settings);
 
 const sketch = new p5((p) => {
   p.setup = () => {
     p.createCanvas(800, 800);
-    // p.noLoop();
     p.randomSeed(Date.now());
-    const updateSettings = ui.build("●", settings);
-    updateSettings((s) => {
-      s.frame = 10;
-      return s;
-    });
   };
 
   p.draw = () => {
@@ -78,15 +71,15 @@ const sketch = new p5((p) => {
       tileCount,
       balance,
       foregroundColor,
-      strokeRange,
-    } = settings;
+    } = potzblitz.snapshot;
 
     p.push();
     p.translate(+p.width * 0.5, +p.height * 0.5);
-    p.rotate(p.radians(settings.rotation));
+    p.rotate(p.radians(potzblitz.snapshot.rotation));
     p.translate(-p.width * 0.5, -p.height * 0.5);
     p.randomSeed(seed);
     p.background(invert ? foregroundColor : backgroundColor);
+
     // 10 PRINT
     for (let x = 0; x < tileCount; x++) {
       for (let y = 0; y < tileCount; y++) {
@@ -98,9 +91,7 @@ const sketch = new p5((p) => {
         const yEnd = yStart + ySize;
         const rand = p.random(0, 1) > balance / 100;
         p.stroke(invert ? backgroundColor : foregroundColor);
-        p.strokeWeight(
-          strokeWidth * p.random(strokeRange.low, strokeRange.high)
-        );
+        p.strokeWeight(strokeWidth);
         if (rand) {
           p.line(xStart, yStart, xEnd, yEnd);
         } else {
@@ -109,8 +100,9 @@ const sketch = new p5((p) => {
       }
     }
     p.pop();
+
     // Passpartout
-    const { border, color: passpartoutColor } = settings.passpartout;
+    const { border, color: passpartoutColor } = potzblitz.snapshot.passpartout;
     p.fill(passpartoutColor);
     p.noStroke();
     p.rect(0, 0, border.left, p.height);
