@@ -46,7 +46,8 @@
 
   &:disabled {
     cursor: default;
-    opacity: 0.5;
+    opacity: 0.1;
+    transform: rotate(180deg);
     &:hover {
       background: var(--button--color-background) !important;
       color: var(--button--color-foreground) !important;

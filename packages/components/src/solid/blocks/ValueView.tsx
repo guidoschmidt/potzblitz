@@ -1,5 +1,5 @@
 import "../../scss/blocks/ValueView.scss";
 
-export function AdditionalValueInput(props: { value: number }) {
-  return <span class="additional-value-input">{props.value}</span>;
+export function ValueView(props: { value: number }) {
+  return <span class="value-view">{props.value}</span>;
 }

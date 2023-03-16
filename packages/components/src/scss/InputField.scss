@@ -45,10 +45,30 @@
   input[type="text"] {
     color: var(--input-field--color-foreground);
     border-color: var(--input-field--color-foreground);
-    border-bottom: var(--text--border-width) solid var(--input-field--color-foreground);
+    border-bottom: var(--text--border-width) solid
+      var(--input-field--color-foreground);
     font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
     background: var(--input-field--color-background);
+
+    &:focus {
+      border-bottom: var(--) solid currentColor;
+    }
+  }
+
+  textarea, .input {
+    padding: var(--input-field--padding);
+    color: var(--input-field--color-foreground);
+    border-color: var(--input-field--color-foreground);
+    border-bottom: var(--text--border-width) solid
+      var(--input-field--color-foreground);
+    font-size: var(--input-field--font-size);
+    font-family: var(--input-field--font);
+    background: var(--input-field--color-background);
+    border: 0;
+    outline: 0;
+    width: 100%;
+    resize: none;
 
     &:focus {
       border-bottom: var(--) solid currentColor;

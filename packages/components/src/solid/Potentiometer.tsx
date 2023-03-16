@@ -7,7 +7,7 @@ import {
   createEffect,
 } from "solid-js";
 import { PotentiometerProps, uniqueName } from "../api";
-import { CopyValueButton, AdditionalValueInput } from "./blocks";
+import { CopyValueButton, ValueView } from "./blocks";
 
 export function Potentiometer(props: PotentiometerProps) {
   let knobWrapperRef: HTMLDivElement;
@@ -94,7 +94,7 @@ export function Potentiometer(props: PotentiometerProps) {
           <div class="angle-indicator" />
         </div>
       </div>
-      <AdditionalValueInput value={vO()} />
+      <ValueView value={vO()} />
       <CopyValueButton value={vO()} />
     </div>
   );

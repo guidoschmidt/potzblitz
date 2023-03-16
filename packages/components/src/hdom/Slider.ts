@@ -13,7 +13,7 @@ function Slider(props: hdomSliderProps) {
     const handleInput = (e: InputEvent) => {
       const target = e.target as HTMLInputElement;
       const value = parseFloat(target.value);
-      const div = props.step ? Math.pow(10, `${props.step}`.length - 2) : 1000;
+      const div = props.step ? Math.pow(10, `${props.step}`.length - 1) : 1000;
       const fixedValue = Math.floor(value * div) / div;
       props.onUpdate && props.onUpdate(fixedValue);
     };

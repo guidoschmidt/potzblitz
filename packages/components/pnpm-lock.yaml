@@ -8,6 +8,7 @@ specifiers:
   p5: ^1.6.0
   react: ^18.2.0
   react-dom: ^18.2.0
+  solid-js: ^1.6.14
   uuid: ^9.0.0
 
 dependencies:
@@ -18,6 +19,7 @@ dependencies:
   p5: 1.6.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  solid-js: 1.6.14
   uuid: 9.0.0
 
 packages:
@@ -78,6 +80,10 @@ packages:
       indexof: 0.0.1
     dev: false
 
+  /csstype/3.1.1:
+    resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
+    dev: false
+
   /html-element/2.3.1:
     resolution: {integrity: sha512-xnFt2ZkbFcjc+JoAtg3Hl89VeEZDjododu4VCPkRvFmBTHHA9U1Nt6hLUWfW2O+6Sl/rT1hHK/PivleX3PdBJQ==}
     engines: {node: '>=4.2'}
@@ -133,6 +139,12 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /solid-js/1.6.14:
+    resolution: {integrity: sha512-9SSpGWZqzq8n/JhIt2PsYzLreG4PySmAexLnRM386oMeG5oSWa9QIRoiok45rLNJg148USEfI9wlkJkMrA2qGg==}
+    dependencies:
+      csstype: 3.1.1
     dev: false
 
   /tslib/2.5.0:

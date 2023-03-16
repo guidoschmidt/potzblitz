@@ -1,8 +1,13 @@
-.potzblitz {
-  --potzblitz--padding: 5px;
-  --potzblitz--font-face: "IBM Plex Mono", monospace;
-  --potzblitz--font-size: 9px;
-
+.ui-root {
+  // Colors
   --potzblitz--color-foreground: black;
-  --potzblitz--color-background: white;
+  --potzblitz--color-background: transparent;
+  --potzblitz--color-dim: #ddd;
+
+  // Spacings & Layout
+  --potzblitz--layout-gap: 0;
+
+  // Groups
+  --potzblitz--group-border-width: 0.1px;
+  --potzblitz--group-border-color: rgba(var(--color-fg), 0.2);
 }

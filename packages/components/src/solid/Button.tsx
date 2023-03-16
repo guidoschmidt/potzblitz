@@ -8,11 +8,14 @@ export function Button(props: ButtonProps) {
     props
   ) as ButtonProps;
   return (
-    <button
-      classList={{ button: true, ...mprops.classList }}
-      onClick={props?.onClick}
-    >
-      {camelCaseWithSpaces(mprops.label)}
-    </button>
+    <div class="button-wrapper" classList={mprops.classList}>
+      <button
+        class="button"
+        onClick={props?.onClick}
+        disabled={mprops.disabled}
+      >
+        {camelCaseWithSpaces(mprops.label)}
+      </button>
+    </div>
   );
 }

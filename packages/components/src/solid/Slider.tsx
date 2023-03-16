@@ -1,7 +1,7 @@
 import "../scss/Slider.scss";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { SliderPros, uniqueName } from "../api";
-import { CopyValueButton, AdditionalValueInput } from "./blocks";
+import { CopyValueButton, ValueView } from "./blocks";
 
 export function Slider(props: SliderPros) {
   const mprops: SliderPros = mergeProps(
@@ -33,7 +33,7 @@ export function Slider(props: SliderPros) {
   });
 
   return (
-    <div className="slider" id={idStr}>
+    <div classList={{ slider: true, ...mprops.classList }} id={idStr}>
       {mprops.label && <label>{mprops.label}</label>}
       <input
         type="range"
@@ -48,7 +48,7 @@ export function Slider(props: SliderPros) {
           mprops.onBlur && mprops.onBlur(handleInput(e))
         }
       />
-      <AdditionalValueInput value={vO()} />
+      <ValueView value={vO()} />
       {mprops.showCopyButton && <CopyValueButton value={vO()} />}
     </div>
   );

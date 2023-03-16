@@ -8,6 +8,10 @@ import {
 } from "../api";
 import { CopyValueButton } from "./blocks";
 
+interface solidInputFieldProps extends InputFieldProps {
+  value: string | number;
+}
+
 function NumberInput(props: NumberInputFieldProps) {
   return (
     <>
@@ -41,7 +45,7 @@ function TextInput(props: TextInputFieldProps) {
   );
 }
 
-export function InputField(props: InputFieldProps) {
+export function InputField(props: solidInputFieldProps) {
   const mprops: InputFieldProps = mergeProps(
     {
       label: "",
