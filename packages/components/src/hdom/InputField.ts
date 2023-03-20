@@ -15,7 +15,8 @@ interface hdomStringInputFieldProps extends InputFieldProps {
 function NumberInputField(props: hdomNumberInputFieldProps) {
   return () => {
     const handleDecrease = () => {
-      const value = props.value.deref() - (props.step || 1);
+      const v = props.value.deref() ?? 0;
+      const value = v - (props.step || 1);
       const div = props.step ? Math.pow(10, `${props.step}`.length - 1) : 1000;
       const fixedValue = Math.floor(value * div) / div;
       props.onInput && props.onInput(fixedValue);
@@ -28,7 +29,8 @@ function NumberInputField(props: hdomNumberInputFieldProps) {
     };
 
     const handleIncrease = () => {
-      const value = props.value.deref() + (props.step || 1);
+      const v = props.value.deref() ?? 0;
+      const value = v + (props.step || 1);
       const div = props.step ? Math.pow(10, `${props.step}`.length - 1) : 1000;
       const fixedValue = Math.floor(value * div) / div;
       props.onInput && props.onInput(fixedValue);

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
   "license": "MIT",
+  "types": "./types",
   "dependencies": {
     "@thi.ng/api": "^8.7.3",
     "@thi.ng/atom": "^5.1.32",
@@ -15,6 +16,7 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "extract": "deno run --watch --allow-read=./src/scss ./src/helper/extractCssVariables.ts"
+    "extract": "deno run --watch --allow-read=./src/scss ./src/helper/extractCssVariables.ts",
+    "compile": "tsc"
   }
 }

@@ -1,5 +1,5 @@
 import "../scss/Select.scss";
-import { camelCaseWithSpaces, SelectProps, uniqueName } from "../api";
+import { camelCaseWithSpaces, SelectProps } from "../api";
 import { type View } from "@thi.ng/atom";
 
 interface hdomSelectProps<T> extends SelectProps<T> {
@@ -32,7 +32,8 @@ function Select<T>(props: hdomSelectProps<T>) {
       props.onSelect && props.onSelect(o, idx);
       const target = e.target as HTMLDivElement;
       if (target !== null) {
-        hideOptions(target.parentElement);
+        const parent = target.parentElement as HTMLDivElement;
+        parent && hideOptions(parent);
       }
     };
 

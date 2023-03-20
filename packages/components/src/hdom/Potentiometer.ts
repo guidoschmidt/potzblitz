@@ -55,7 +55,7 @@ function Potentiometer(props: hdomPotentiometerProps) {
           "div.knob",
           {
             style: {
-              transform: `rotate(${props.value.deref() * 360}deg)`,
+              transform: `rotate(${(props.value.deref() ?? 0) * 360}deg)`,
             },
           },
           ["div.angle-indicator"],
