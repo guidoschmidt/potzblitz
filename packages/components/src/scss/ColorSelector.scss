@@ -1,10 +1,12 @@
 @import "./Common";
 
 .colorselector {
+  --colorselector--size: 20px;
+  --colorselector--border-radius: 100%;
+
   --hue-current: 10;
 
   @include ComponentLayout;
-  display: flex;
 
   &:hover {
     .color-preview-wrapper {
@@ -19,22 +21,24 @@
   }
 
   .color-preview-wrapper {
-    flex-grow: 1;
+    align-items: center;
+    align-items: center;
     cursor: pointer;
-    align-items: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(1);
-    margin: 0;
     flex-grow: 1;
+    justify-content: center;
+    margin: 0;
+    transform: scale(1);
   
     .color-preview {
-      transition: box-shadow 300ms ease, transform 300ms ease;
-      width: 20px;
-      height: 20px;
-      border-radius: 100%;
+      min-height: var(--colorselector--size);
+      min-width: var(--colorselector--size);
+      width: var(--colorselector--size);
+      height: var(--colorselector--size);
+      border-radius: var(--colorselector--border-radius);
       box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 300ms ease, transform 300ms ease;
+      align-self: center;
     }
 
     .tool {

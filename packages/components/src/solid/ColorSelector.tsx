@@ -1,6 +1,7 @@
 import "../scss/ColorSelector.scss";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { ColorSelectorProps, uniqueName } from "../api";
+import { ValueView } from "./blocks";
 
 interface solidColorSelectorProps extends ColorSelectorProps {
   value: string;
@@ -69,7 +70,10 @@ export function ColorSelector(props: solidColorSelectorProps) {
   return (
     <div class="colorselector" ref={ref}>
       {mprops.label && <label for={idStr}>{mprops.label}</label>}
-      <div class="color-preview-wrapper" style={{"z-index": activeTool() ? "999" : "0"}}>
+      <div
+        class="color-preview-wrapper"
+        style={{ "z-index": activeTool() ? "999" : "0" }}
+      >
         <div
           class="color-preview"
           onClick={(e: PointerEvent) => showTool(e)}
@@ -238,6 +242,7 @@ export function ColorSelector(props: solidColorSelectorProps) {
           </div>
         )}
       </div>
+      <ValueView value={mprops.value} />
     </div>
   );
 }

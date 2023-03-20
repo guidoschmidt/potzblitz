@@ -1,10 +1,10 @@
 import "../scss/Slider.scss";
 import { mergeProps, createSignal, createEffect } from "solid-js";
-import { SliderPros, uniqueName } from "../api";
+import { SliderProps, uniqueName } from "../api";
 import { CopyValueButton, ValueView } from "./blocks";
 
-export function Slider(props: SliderPros) {
-  const mprops: SliderPros = mergeProps(
+export function Slider(props: SliderProps) {
+  const mprops: SliderProps = mergeProps(
     {
       value: 0,
       min: 0,

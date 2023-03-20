@@ -3,10 +3,11 @@ import { mergeProps } from "solid-js";
 import { ButtonProps, camelCaseWithSpaces } from "../api";
 
 export function Button(props: ButtonProps) {
-  const mprops = mergeProps(
+  const mprops: ButtonProps = mergeProps(
     { label: "", onClick: () => {}, classList: {} },
     props
-  ) as ButtonProps;
+  );
+
   return (
     <div class="button-wrapper" classList={mprops.classList}>
       <button
