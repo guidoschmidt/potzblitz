@@ -28,6 +28,10 @@ export interface ColorPickerProps extends ComponentProps {
   onSelect?: (c: string) => void;
 }
 
+export interface ColorSelectorProps extends ComponentProps {
+  onSelect?: (c: string) => void;
+}
+
 export interface InputFieldProps extends ComponentProps {
   min?: number;
   max?: number;
