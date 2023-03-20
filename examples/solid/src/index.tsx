@@ -1,80 +1,140 @@
 import "./index.scss";
-import { render, For, Index } from "solid-js/web";
+import { render, For, Switch, Match, Index } from "solid-js/web";
 import { createStore } from "solid-js/store";
-import { ColorPicker, InputField, Button, Slider } from "@potzblitz/components";
+import {
+  ColorPicker,
+  ColorSelector,
+  NumberInputField,
+  StringInputField,
+  Toggle,
+  Button,
+  Slider,
+} from "@potzblitz/components/src/solid";
 import { createSignal } from "solid-js";
-import { Counter } from "./Counter";
-import { Test, enableHydration } from "@potzblitz/solid-components/lib";
-
-enableHydration();
 
 function App() {
-  const [store, updateStore] = createStore({ v: 10 });
+  const [store, updateStore] = createStore({
+    ["@life"]: {
+      component: "slider",
+      min: 0,
+      max: 1.0,
+      step: 0.1,
+    },
+    life: 40,
+    name: "William",
+    showText: true,
+    ["@background"]: {
+      component: "colorselector",
+    },
+    background: "#F0F",
+    test: () => alert("WHAT?"),
+  });
   const [sliders, updateSliders] = createSignal([0, 0, 0]);
-  const [counter, setCounter] = createSignal(0);
 
   return (
-    <div class="app">
+    <div>
       <h1>Solid × Potzblitz</h1>
-      <Counter value={counter()} onClick={() => setCounter(counter() + 1)} />
-      <Counter value={counter()} onClick={() => setCounter(counter() + 10)} />
-      <ColorPicker value="#ff0000" />
-      <Test value={() => counter()} />
-      <Slider
-        value={store["v"]}
-        min={0}
-        max={20}
-        step={0.01}
-        onUpdate={(v) => updateStore("v", v)}
-      />
-      <InputField value={store["v"]} min={0} max={20} step={0.01} />
+      <div class="ui-root">
+        <ColorPicker label="color #1" value="#ff0000" />
+        <ColorSelector label="color #2" value="#ff0000" />
 
-      <Index each={sliders()}>
-        {(v, i) => {
-          return (
-            <div>
-              <Slider
-                label="Slider"
-                value={v()}
-                onUpdate={(v: number) => {
-                  const update = [...sliders()];
-                  update[i] = v;
-                  updateSliders(update);
-                }}
-              />
-              <span>Value: {v}</span>
-            </div>
-          );
-        }}
-      </Index>
+        <For each={Object.keys(store).filter((key) => !key.includes("@"))}>
+          {(key: string) => {
+            const _type = typeof store[key];
+            const _options = store[`@${key}`];
+            return (
+              <div class="group">
+                <Switch>
+                  <Match when={_options?.component === "colorselector"}>
+                    <ColorSelector label={key} value={store[key]} />
+                  </Match>
 
-      <Index each={sliders()}>
-        {(v, i) => {
-          return (
-            <div>
-              <Slider
-                label="Slider"
-                value={v()}
-                onUpdate={(v: number) => {
-                  const update = [...sliders()];
-                  update[i] = v;
-                  updateSliders(update);
-                }}
-              />
-              <span>Value: {v}</span>
-            </div>
-          );
-        }}
-      </Index>
+                  <Match when={_options?.component === "slider"}>
+                    <Slider
+                      label={key}
+                      value={store[key]}
+                      onUpdate={(v: number) => updateStore(key, v)}
+                    />
+                  </Match>
 
-      <Button
-        label="Randomize"
-        onClick={() => {
-          updateSliders((old) => old.map((_) => Math.random() * 100));
-        }}
-      />
+                  <Match when={_type === "number"}>
+                    <NumberInputField
+                      label={key}
+                      value={store[key]}
+                      onInput={(v: number) => updateStore(key, v)}
+                    />
+                  </Match>
 
-      <code>{JSON.stringify(sliders())}</code>
+                  <Match when={_type === "string"}>
+                    <StringInputField
+                      label={key}
+                      value={store[key]}
+                      onInput={(v: string) => updateStore(key, v)}
+                    />
+                  </Match>
+
+                  <Match when={_type === "boolean"}>
+                    <Toggle
+                      label={key}
+                      value={store[key]}
+                      onChange={(v: boolean) => updateStore(key, v)}
+                    />
+                  </Match>
+
+                  <Match when={_type === "function"}>
+                    <Button label={key} onClick={store[key]} />
+                  </Match>
+                </Switch>
+              </div>
+            );
+          }}
+        </For>
+
+        <Index each={sliders()}>
+          {(v, i) => {
+            return (
+              <div>
+                <Slider
+                  label="Slider"
+                  value={v()}
+                  onUpdate={(v: number) => {
+                    const update = [...sliders()];
+                    update[i] = v;
+                    updateSliders(update);
+                  }}
+                />
+              </div>
+            );
+          }}
+        </Index>
+
+        <Index each={sliders()}>
+          {(v, i) => {
+            return (
+              <div>
+                <Slider
+                  label="Slider"
+                  value={v()}
+                  onUpdate={(v: number) => {
+                    const update = [...sliders()];
+                    update[i] = v;
+                    updateSliders(update);
+                  }}
+                />
+              </div>
+            );
+          }}
+        </Index>
+
+        <Button
+          label="Randomize"
+          onClick={() => {
+            updateSliders((old) => old.map((_) => Math.random() * 100));
+          }}
+        />
+
+        <code class="debug">{JSON.stringify(store)}</code>
+      </div>
     </div>
   );
 }

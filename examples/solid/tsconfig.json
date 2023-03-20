@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
+    "target": "esnext",
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "moduleResolution": "node"
   }
 }

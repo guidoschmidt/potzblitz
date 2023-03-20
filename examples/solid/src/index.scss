@@ -1,29 +1,40 @@
 :root {
-  --potzblitz--color-foreground: black;
-  --potzblitz--color-background: white;
-  --potzblitz--color-dim: #ddd;
+  --potzblitz--color-foreground: white;
+  --potzblitz--color-background: black;
+  --potzblitz--color-dim: red;
 
   --potzblitz--layout-gap: 4px;
 
   --potzblitz--group-border-width: 0.1px;
-  --potzblitz--group-border-color: rgba(0, 0, 0, 0.2);
+  --potzblitz--group-border-color: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  background: var(--potzblitz--color-background);
+  color: var(--potzblitz--color-foreground);
+  font-size: 14px;
+  font-family: "Space Mono";
 }
 
 .ui-root {
   --margin: 10px;
   margin: var(--margin);
   max-height: calc(100vh - 2 * var(--margin));
-  overflow-y: auto;
-  font-size: 12px;
-  font-family: "Space Mono";
   background: var(--potzblitz--color-background);
   color: var(--potzblitz--color-foreground);
+  gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  & > div {
+    border: 1px solid var(--potzblitz--group-border-color);
   }
 
   & > .group {
@@ -88,4 +99,9 @@
       }
     }
   }
+}
+
+.debug {
+  grid-column: -1 / 1;
+  padding: 10px;
 }
