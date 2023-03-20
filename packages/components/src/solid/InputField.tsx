@@ -8,8 +8,8 @@ import {
 } from "../api";
 import { CopyValueButton } from "./blocks";
 
-interface solidInputFieldProps extends InputFieldProps {
-  value: string | number;
+interface solidInputFieldProps<T> extends InputFieldProps {
+  value: T;
 }
 
 function NumberInput(props: NumberInputFieldProps) {
@@ -45,8 +45,8 @@ function TextInput(props: TextInputFieldProps) {
   );
 }
 
-export function InputField(props: solidInputFieldProps) {
-  const mprops: InputFieldProps = mergeProps(
+export function StringInputField(props: solidInputFieldProps<string>) {
+  const mprops: solidInputFieldProps<string> = mergeProps(
     {
       label: "",
       value: "",
@@ -67,12 +67,60 @@ export function InputField(props: solidInputFieldProps) {
     setVO(mprops.value);
   });
 
-  const handleInput = (v: number | string) => {
+  const handleInput = (v: string) => {
     setVO(v);
     return v;
   };
 
-  const handleChange = (newV: number | string) => {
+  const handleBlur = () => {
+    mprops.onBlur && mprops.onBlur(vO());
+  };
+
+  return (
+    <div
+      classList={{ inputfield: true, ...mprops.classList }}
+      ref={inputFieldRef}
+    >
+      {mprops.label && <label>{mprops.label}</label>}
+      <TextInput
+        id={idStr}
+        value={vO() as string}
+        handleInput={(e: InputEvent) => {
+          const target = e.target as HTMLInputElement;
+          const v = handleInput(String(target.value));
+          mprops.onInput && mprops.onInput(v);
+        }}
+        handleBlur={handleBlur}
+      />
+      {mprops.showCopyButton && <CopyValueButton value={vO()} />}
+    </div>
+  );
+}
+
+export function NumberInputField(props: solidInputFieldProps<number>) {
+  const mprops: solidInputFieldProps<number> = mergeProps(
+    {
+      label: "",
+      value: 0,
+      onInput: () => {},
+      onBlur: () => {},
+      step: 1,
+      min: -Infinity,
+      max: +Infinity,
+    },
+    props
+  );
+  const [idStr, _id] = uniqueName(mprops.label);
+  const [vO, setVO] = createSignal(mprops.value);
+
+  let inputFieldRef: HTMLInputElement;
+
+  const handleInput = (v: number) => {
+    setVO(v);
+    return v;
+  };
+
+  const handleChange = (newV: number) => {
     mprops.onInput && mprops.onInput(newV);
   };
 
@@ -89,39 +137,23 @@ export function InputField(props: solidInputFieldProps) {
       ref={inputFieldRef}
     >
       {mprops.label && <label>{mprops.label}</label>}
-      {typeof mprops.value === "string" ? (
-        <TextInput
-          id={idStr}
-          value={vO() as string}
-          handleInput={(e: InputEvent) => {
-            const target = e.target as HTMLInputElement;
-            handleInput(String(target.value));
-          }}
-          handleBlur={handleBlur}
-        />
-      ) : (
-        <NumberInput
-          id={idStr}
-          value={vO() as number}
-          handleInput={(e: InputEvent) => {
-            const target = e.target as HTMLInputElement;
-            handleChange(handleInput(parseFloat(target.value) as number));
-          }}
-          handleBlur={handleBlur}
-          handleIncrease={() => {
-            setVO(
-              clamp((vO() as number) + mprops.step, mprops.min, mprops.max)
-            );
-            mprops.onInput && mprops.onInput(vO());
-          }}
-          handleDecrease={() => {
-            setVO(
-              clamp((vO() as number) - mprops.step, mprops.min, mprops.max)
-            );
-            mprops.onInput && mprops.onInput(vO());
-          }}
-        />
-      )}
+      <NumberInput
+        id={idStr}
+        value={vO() as number}
+        handleInput={(e: InputEvent) => {
+          const target = e.target as HTMLInputElement;
+          handleChange(handleInput(parseFloat(target.value) as number));
+        }}
+        handleBlur={handleBlur}
+        handleIncrease={() => {
+          setVO(clamp((vO() as number) + mprops.step, mprops.min, mprops.max));
+          mprops.onInput && mprops.onInput(vO());
+        }}
+        handleDecrease={() => {
+          setVO(clamp((vO() as number) - mprops.step, mprops.min, mprops.max));
+          mprops.onInput && mprops.onInput(vO());
+        }}
+      />
       {mprops.showCopyButton && <CopyValueButton value={vO()} />}
     </div>
   );

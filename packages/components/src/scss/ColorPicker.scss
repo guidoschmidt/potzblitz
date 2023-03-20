@@ -2,7 +2,6 @@
 
 .colorpicker {
   --colorpicker--size: 20px;
-  --colorpicker--padding: 10px;
   --colorpicker--border-radius: 100%;
 
   @include ComponentLayout;
@@ -24,15 +23,15 @@
   }
 
   .color-preview-wrapper {
-    flex-grow: 1;
-    cursor: pointer;
-    align-items: stretch;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    transform: scale(1);
-    margin: 0;
+    align-items: stretch;
+    cursor: pointer;
+    display: flex;
     flex-grow: 1;
+    justify-content: center;
+    margin: 0;
+    transform: scale(1);
+    align-self: center;
     .color-preview {
       min-height: var(--colorpicker--size);
       min-width: var(--colorpicker--size);

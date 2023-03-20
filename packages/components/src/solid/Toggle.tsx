@@ -2,8 +2,12 @@ import "../scss/Toggle.scss";
 import { camelCaseWithSpaces, ToggleProps } from "../api";
 import { createSignal, mergeProps, createEffect } from "solid-js";
 
-export function Toggle(props: ToggleProps) {
-  const mprops: ToggleProps = mergeProps(
+interface solidToggleProps extends ToggleProps {
+  value: boolean;
+}
+
+export function Toggle(props: solidToggleProps) {
+  const mprops: solidToggleProps = mergeProps(
     { value: false, onChange: () => {} },
     props
   );
@@ -23,9 +27,9 @@ export function Toggle(props: ToggleProps) {
   return (
     <div class="toggle">
       {mprops.label && <label>{camelCaseWithSpaces(mprops.label)}</label>}
-      <div class="knob" onClick={handleSwitch}>
+      <div class="input-wrapper" onClick={handleSwitch}>
         <div classList={{ state: true, on: vO() }}>
-          <input type="checkbox" value={vO()} />
+          <input type="checkbox" value={vO().toString()} />
         </div>
       </div>
     </div>

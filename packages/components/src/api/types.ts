@@ -3,7 +3,7 @@ export interface ComponentProps {
   disabled?: boolean;
   showCopyButton?: boolean;
   // @TODO How to differentiate between class & classList?
-  classList?: object;
+  classList?: { [key: string]: boolean };
 }
 
 export interface SliderProps extends ComponentProps {
