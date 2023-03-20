@@ -1,0 +1,17 @@
+{
+  "name": "@potzblitz/solid-components",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "build": "vite build --config vite.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "solid-js": "^1.6.15",
+    "vite": "^4.2.0",
+    "vite-plugin-solid": "^2.6.1"
+  }
+}
