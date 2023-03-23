@@ -45,10 +45,14 @@
     "watch": "rollup -c --watch"
   },
   "dependencies": {
+    "@potzblitz/ui": "^0.0.8-alpha",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@thi.ng/atom": "^5.1.32",
     "@thi.ng/hdom": "^9.3.3",
+    "@thi.ng/rstream": "^7.2.45",
+    "@thi.ng/transducers": "^8.4.0",
+    "@thi.ng/transducers-hdom": "^3.1.49",
     "p5": "^1.6.0",
     "rollup": "^3.18.0",
     "solid": "^0.2.1",

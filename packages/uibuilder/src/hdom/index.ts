@@ -1,5 +1,8 @@
 import { type Atom, defAtom } from "@thi.ng/atom";
-import { start } from "@thi.ng/hdom/start";
+import { start, renderOnce } from "@thi.ng/hdom";
+import { fromAtom, trace, sync, reactive } from "@thi.ng/rstream";
+import { updateDOM } from "@thi.ng/transducers-hdom";
+import { map } from "@thi.ng/transducers";
 import { ComponentTree } from "./components";
 
 class Potzblitz {
@@ -22,10 +25,10 @@ class Potzblitz {
     this._state.addWatch("", () => {
       changeFn(this._state.deref());
     });
-    const root = () => {
-      return ["div.ui-root", ComponentTree(this._state, "", rootStyle)];
+    const root = ({ state }) => {
+      return ["div.ui-root", ComponentTree(state, "", rootStyle)];
     };
-    start(root(), { root: "mount" });
+    start(root({ state: this._state }), { root: "mount" });
   }
 
   get state(): Atom<any> {
