@@ -1,8 +1,6 @@
 import "./styles/index.scss";
-import { UiRoot } from "./hyperscript";
+import { Potzblitz } from "./hdom";
 
-globalThis.Potzblitz = {
-  UiRoot,
-};
+globalThis.Potzblitz = Potzblitz;
 
-export { UiRoot };
+export { Potzblitz };

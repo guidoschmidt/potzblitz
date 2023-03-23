@@ -7,7 +7,6 @@
   overflow-y: auto;
   font-size: 11px;
   font-family: "Space Mono";
-  background: var(--potzblitz--color-background);
   color: var(--potzblitz--color-foreground);
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -17,10 +16,14 @@
     display: none;
   }
 
+  label, .slider {
+    background: var(--potzblitz--color-background);
+  }
 
   & > .group {
     border: 0;
     outline: 0;
+    background: transparent;
   }
 
   .group {
@@ -29,6 +32,7 @@
 
     &.collapsed {
       .group-label {
+        padding-right: 2ch;
         &:before {
           content: "↘";
         }
