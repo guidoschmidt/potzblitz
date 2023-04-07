@@ -5,8 +5,8 @@
 }
 
 .button {
-  --button--font-size: 0.6rem;
-  --button--font: Monospace;
+  --button-font: var(--potzblitz--font);
+  --button--font-size: var(--potzblitz--font-size);
   --button--color-border: var(--potzblitz--color-foreground);
   --button--color-background: var(--potzblitz--color-background);
   --button--color-foreground: var(--potzblitz--color-foreground);
@@ -32,6 +32,7 @@
   border: var(--button--border-width) solid var(--button--color-border);
   align-self: stretch;
   justify-self: stretch;
+  height: 100%;
 
   &:hover {
     background: var(--button--color-hover-background) !important;

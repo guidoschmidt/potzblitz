@@ -3,13 +3,11 @@
 .toggle {
   --toggle--font: Monospace;
   --toggle--padding: 10px;
+  --toggle--border-radius: 10px;
 
   --toggle--color-on: var(--potzblitz--color-foreground);
-  --toggle--color-off: var(--potzblitz--color-dim);
 
-  --toggle--size: 15px;
-  --toggle--radius: 15px;
-  --toggle--knob-radius: 100%;
+  --toggle--size: 14px;
 
   @include ComponentLayout;
 
@@ -26,7 +24,7 @@
     display: flex;
     transition: outline 50ms ease;
     cursor: pointer;
-    border-radius: var(--toggle--radius);
+    border-radius: 0;
     margin: var(--toggle--padding);
     &:hover {
       .state {
@@ -36,17 +34,25 @@
 
     input {
       display: none;
+      pointer-events: none;
     }
 
     .state {
-      min-width: var(--toggle--size);
-      min-height: var(--toggle--size);
-      border-radius: var(--toggle--knob-radius);
+      width: var(--toggle--size);
+      height: var(--toggle--size);
+      position: relative;
+      border: 1px solid var(--potzblitz--color-foreground);
+      border-radius: var(--toggle--border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      background: var(--potzblitz--color-foreground);
       &.on {
-        background: var(--toggle--color-on);
+        opacity: 1.0;
       }
       &.off {
-        background: var(--toggle--color-off);
+        opacity: 0.2;
       }
     }
   }

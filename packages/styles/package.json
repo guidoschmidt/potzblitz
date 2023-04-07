@@ -1,0 +1,15 @@
+{
+  "name": "@potzblitz/styles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.css",
+  "scripts": {
+    "build": "sass lib/potzblitz.scss dist/index.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.61.0"
+  }
+}

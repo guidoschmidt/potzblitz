@@ -1,0 +1,115 @@
+// @use "@potzblitz/rdom-components/dist/style.css";
+
+:root {
+  --potzblitz--color-foreground: black;
+  --potzblitz--color-background: white;
+  --potzblitz--color-highlight: white;
+  --potzblitz--color-title: rgba(0, 0 ,0, 0.05);
+  --potzblitz--color-border: rgba(0, 0 ,0, 0.15);
+
+  --potzblitz--font: monospace;
+  --potzblitz--font-size: 12px;
+
+  --potzblitz--column-count: 3;
+
+  // @TODO add --potzblitz--padding
+}
+
+.ui-root {
+  font-size: var(--potzblitz--font-size);
+  font-family: var(--potzblitz--font);
+  background: var(--potzblitz--color-background);
+  color: var(--potzblitz--color-foreground);
+
+  display: grid;
+  grid-template-columns: repeat(var(--potzblitz--column-count), 1fr);
+  max-height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .component {
+    border: 1px solid var(--potzblitz--color-border);
+    align-self: start;
+    &:not(.function) {
+      padding: 10px;
+    }
+  }
+
+  // @TODO delete
+  code {
+    grid-column: -1 / 1;
+    background: var(--potzblitz--color-foreground);
+    color: var(--potzblitz--color-background);
+    padding: 10px;
+  }
+
+  .searchfield {
+    grid-column: -1 / 1;
+    height: 100%;
+  }
+ 
+  .group {
+    grid-column: -1 / 1;
+    display: grid;
+    grid-template-columns: repeat(var(--potzblitz--column-count), 1fr);
+
+    &.hidden {
+      .group-title {
+        border: 1px solid var(--potzblitz--color-border);
+        &:after {
+          content: "↘"
+        }
+      }
+
+      .group-elements {
+        display: none;
+      }
+    }
+
+    .group-title {
+      font-weight: bold;
+      padding: 10px;
+      background: var(--potzblitz--color-title);
+      border: 1px solid var(--potzblitz--color-border);
+      border-bottom: none;
+      grid-column: -1 / 1;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      &.search {
+        background: yellow;
+      }
+      span {
+        pointer-events: none;
+      }
+      &:after {
+        content: "↑";
+        font-weight: 200;
+      }
+    }
+
+    .group-elements {
+      grid-column: -1 / 1;
+      display: grid;
+      gap: 2px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      // grid-template-columns: repeat(2, 1fr);
+      align-items: stretch;
+      justify-items: stretch;
+    }
+
+    .subgroup {
+      &.hidden {
+        display: none
+      }
+    }
+  }
+}

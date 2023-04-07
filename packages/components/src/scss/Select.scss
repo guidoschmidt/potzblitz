@@ -1,7 +1,7 @@
 @import "./Common.scss";
 
 .select {
-  --select--font: Monospace;
+  --select--font: var(--potzblitz--font);
   --select--font-size: auto;
   --select--padding: 10px;
   --select--color-background: var(--potzblitz--color-background);
@@ -21,7 +21,6 @@
   }
 
   .selected {
-    background: var(--select--color-background);
     color: var(--select--color-foreground);
     font-family: var(--select--font);
     display: flex;
@@ -32,6 +31,9 @@
     align-self: stretch;
     cursor: pointer;
     padding: var(--select--padding);
+    span {
+      pointer-events: none;
+    }
   }
 
   .options {
@@ -40,7 +42,7 @@
     display: block;
     right: 10%;
     background: var(--select--color-background);
-    top: 100%;
+    top: 0%;
     z-index: +1;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
     &.hidden {
@@ -55,6 +57,9 @@
       font-family: var(--select--font);
       padding: var(--select--padding);
       cursor: pointer;
+      span {
+        pointer-events: none;
+      }
       &:nth-child(2n) {
         background: var(--select--color-background-alternating);
       }

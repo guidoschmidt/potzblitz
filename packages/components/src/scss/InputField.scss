@@ -1,8 +1,8 @@
 @import "./Common.scss";
 
 .inputfield {
-  --input-field--font-size: 0.75rem;
-  --input-field--font: Monospace;
+  --input-field--font-size: var(--potzblitz--font-size);
+  --input-field--font: var(--potzblitz--font);
   --input-field--padding: 10px;
   --input-field--color-background: var(--potzblitz--color-background);
   --input-field--color-foreground: var(--potzblitz--color-foreground);
@@ -26,20 +26,38 @@
     }
   }
 
-  .step-button {
-    max-width: 10ch;
+  .input-wrapper {
+    flex-grow: 1;
     height: 100%;
-    align-self: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(4ch, auto) 1fr minmax(4ch, auto)
+  }
+
+  .step-button {
+    align-self: stretch;
+    justify-self: stretch;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%;
+    opacity: 0.2;
+    transition: opacity 200ms ease;
+    &:hover {
+      opacity: 1.0;
+      color: var(--input-field--color-foreground) !important;
+      background: transparent !important;
+    }
   }
 
   input[type="number"] {
     -webkit-appearance: none;
     -moz-appearance: textfield;
-    width: 10ch;
+    min-width: 10ch;
     text-align: center;
     font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
-    background: var(--input-field--color-background);
+    // background: var(--input-field--color-background);
   }
 
   input[type="text"] {
@@ -49,7 +67,7 @@
       var(--input-field--color-foreground);
     font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
-    background: var(--input-field--color-background);
+    // background: var(--input-field--color-background);
 
     &:focus {
       border-bottom: var(--) solid currentColor;
@@ -64,7 +82,7 @@
       var(--input-field--color-foreground);
     font-size: var(--input-field--font-size);
     font-family: var(--input-field--font);
-    background: var(--input-field--color-background);
+    // background: var(--input-field--color-background);
     border: 0;
     outline: 0;
     width: 100%;

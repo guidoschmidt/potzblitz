@@ -47,6 +47,13 @@
     transition: transform 200ms ease;
   }
 
+  .slider-wrap {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 10px;
+  }
+
   .text-value {
     font-weight: 200;
   }
