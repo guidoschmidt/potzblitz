@@ -4,6 +4,9 @@ dependencies:
   '@thi.ng/color':
     specifier: ^5.4.6
     version: 5.4.6
+  '@thi.ng/random':
+    specifier: ^3.4.0
+    version: 3.4.0
   '@thi.ng/rdom':
     specifier: ^0.10.18
     version: 0.10.18
@@ -225,6 +228,11 @@ packages:
     engines: {node: '>=12.7'}
     dev: false
 
+  /@thi.ng/api@8.8.0:
+    resolution: {integrity: sha512-uQgM6FYDFjcYXHOxVX0giwcytzFULBwwN7ASTcJ0zbJo8lf6OwyMFBT8kxdwfP+pSX05nCtWMEUyLRX+aR1SEA==}
+    engines: {node: '>=12.7'}
+    dev: false
+
   /@thi.ng/arrays@2.5.9:
     resolution: {integrity: sha512-1Ot8Wnf4TAbXCFLAdWXpuxV7mAGJ43hoCjdD1ZcvS5sEZG0HXrBDIHLkDTVCYAdYfND+Zcyoi1RtwlE74A8I/g==}
     engines: {node: '>=12.7'}
@@ -234,7 +242,7 @@ packages:
       '@thi.ng/compare': 2.1.28
       '@thi.ng/equiv': 2.1.21
       '@thi.ng/errors': 2.2.14
-      '@thi.ng/random': 3.3.28
+      '@thi.ng/random': 3.4.0
     dev: false
 
   /@thi.ng/associative@6.2.33:
@@ -249,7 +257,7 @@ packages:
       '@thi.ng/dcons': 3.2.40
       '@thi.ng/equiv': 2.1.21
       '@thi.ng/errors': 2.2.14
-      '@thi.ng/random': 3.3.28
+      '@thi.ng/random': 3.4.0
       '@thi.ng/transducers': 8.4.1
       tslib: 2.5.0
     dev: false
@@ -279,6 +287,13 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@thi.ng/checks@3.3.12:
+    resolution: {integrity: sha512-2A2bzRleWWq+KPBrfzLCV0ofQR0jzXFXwBdApzOVj8uBlTMs3fxCyEqWduxkKcmCamOsju00JYFkBHbk9Ik70Q==}
+    engines: {node: '>=12.7'}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
   /@thi.ng/color@5.4.6:
     resolution: {integrity: sha512-dtlLou4XRRcQbYBnRZKNgAjM8EoSDz/2EWxMAy6iWCij5kp3XqPFQ4kTLn5zb7eD9yXzDKYoOwYGsrv11eGfuw==}
     engines: {node: '>=12.7'}
@@ -292,7 +307,7 @@ packages:
       '@thi.ng/defmulti': 2.1.34
       '@thi.ng/errors': 2.2.14
       '@thi.ng/math': 5.4.6
-      '@thi.ng/random': 3.3.28
+      '@thi.ng/random': 3.4.0
       '@thi.ng/strings': 3.4.3
       '@thi.ng/transducers': 8.4.1
       '@thi.ng/vectors': 7.6.10
@@ -322,7 +337,7 @@ packages:
       '@thi.ng/compare': 2.1.28
       '@thi.ng/equiv': 2.1.21
       '@thi.ng/errors': 2.2.14
-      '@thi.ng/random': 3.3.28
+      '@thi.ng/random': 3.4.0
       '@thi.ng/transducers': 8.4.1
     dev: false
 
@@ -345,8 +360,18 @@ packages:
     engines: {node: '>=12.7'}
     dev: false
 
+  /@thi.ng/errors@2.2.15:
+    resolution: {integrity: sha512-zyaHmu4Sqpkl5t5tSQLfZPMzfV+pM29EbONXTRNW/8BnTE++iiHwUwFU0rHbeTMPmH0BMp5g4wNG8K+A5xewsw==}
+    engines: {node: '>=12.7'}
+    dev: false
+
   /@thi.ng/hex@2.3.8:
     resolution: {integrity: sha512-9sPEnVH2H92JdkSfVqVgMp/9lJUUC3iCmQIwe4hZaYGosJqVDEIW2foZn9bbfxHru7M6Ht4Y7LRYY5IOVZqy9g==}
+    engines: {node: '>=12.7'}
+    dev: false
+
+  /@thi.ng/hex@2.3.9:
+    resolution: {integrity: sha512-3uzTvMh5lKqno+M4RGW8nI8+DPeFYPgfyIjpYRhQiGlhThyelufRnnizmkYYqWes4x5R+aT2I+p00rbE4mUnQg==}
     engines: {node: '>=12.7'}
     dev: false
 
@@ -393,14 +418,14 @@ packages:
     engines: {node: '>=12.7'}
     dev: false
 
-  /@thi.ng/random@3.3.28:
-    resolution: {integrity: sha512-y4/R3du5Bw5ENRjqFNLn2MoZ2HWWM6yYyKd639itrtegcwf9mSJCW9iPnfrpWPct+VFo/C1tgh0eWRCByl9PKA==}
+  /@thi.ng/random@3.4.0:
+    resolution: {integrity: sha512-983ZBfLbQO+Zf6S13z631aG/e/GXYM479M3ZfQ7ovObNwNqlbS+lI0AH2RwFJFXpIn3dtuNjovRygD4L6VARYA==}
     engines: {node: '>=12.7'}
     dependencies:
-      '@thi.ng/api': 8.7.5
-      '@thi.ng/checks': 3.3.11
-      '@thi.ng/errors': 2.2.14
-      '@thi.ng/hex': 2.3.8
+      '@thi.ng/api': 8.8.0
+      '@thi.ng/checks': 3.3.12
+      '@thi.ng/errors': 2.2.15
+      '@thi.ng/hex': 2.3.9
     dev: false
 
   /@thi.ng/rdom@0.10.18:
@@ -452,7 +477,7 @@ packages:
       '@thi.ng/compose': 2.1.30
       '@thi.ng/errors': 2.2.14
       '@thi.ng/math': 5.4.6
-      '@thi.ng/random': 3.3.28
+      '@thi.ng/random': 3.4.0
     dev: false
 
   /@thi.ng/vectors@7.6.10:
@@ -466,7 +491,7 @@ packages:
       '@thi.ng/errors': 2.2.14
       '@thi.ng/math': 5.4.6
       '@thi.ng/memoize': 3.1.28
-      '@thi.ng/random': 3.3.28
+      '@thi.ng/random': 3.4.0
       '@thi.ng/strings': 3.4.3
       '@thi.ng/transducers': 8.4.1
     dev: false

@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@thi.ng/color": "^5.4.6",
+    "@thi.ng/random": "^3.4.0",
     "@thi.ng/rdom": "^0.10.18",
     "@thi.ng/rstream": "^7.2.46",
     "@thi.ng/transducers": "^8.4.1",

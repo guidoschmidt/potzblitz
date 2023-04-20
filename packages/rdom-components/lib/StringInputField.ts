@@ -12,6 +12,13 @@ export function StringInputField(props: StringInputProps) {
     "div.inputfield",
     {},
     ["label", {}, props.label],
-    ["input", { value: props.value, oninput: props.onInput }],
+    [
+      "input",
+      {
+        value: props.value,
+        oninput: (e: InputEvent) =>
+          props.onInput((e.target as HTMLInputElement).value),
+      },
+    ],
   ];
 }

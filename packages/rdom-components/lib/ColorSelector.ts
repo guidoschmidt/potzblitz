@@ -2,6 +2,7 @@ import "@potzblitz/components/src/scss/ColorSelector.scss";
 import { $style } from "@thi.ng/rdom";
 import { css, hsv, rgb } from "@thi.ng/color";
 import { reactive } from "@thi.ng/rstream";
+import { uuid } from "@thi.ng/random";
 import type { Stream } from "@thi.ng/rstream";
 
 export interface ColorSelectorProps {
@@ -13,6 +14,7 @@ export interface ColorSelectorProps {
 export function ColorSelector(props: ColorSelectorProps) {
   const colorValues = reactive<number[]>([50, 50, 50]);
   const dragValues = reactive([false, false, false, false]);
+  const id = uuid();
 
   const toggleTool = (div: HTMLDivElement) => {
     const tool = div.parentNode?.querySelector(".tool");
@@ -45,7 +47,7 @@ export function ColorSelector(props: ColorSelectorProps) {
 
   return [
     "div.colorselector",
-    {},
+    { id },
     ["label", {}, props.label],
     [
       "div.color-preview-wrapper",
