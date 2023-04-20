@@ -1,3 +1,4 @@
+import "@potzblitz/styles/dist/index.css";
 import "@potzblitz/rdom-components/dist/style.css";
 import { Atom } from "@thi.ng/atom";
 import type { Path } from "@thi.ng/api";
@@ -27,6 +28,7 @@ export class Potzblitz {
     // @ function
     this._componentMap.set("function", async (k: Annotation) => {
       return this.wrap(
+        k,
         "function",
         Button({
           label: k.key,
@@ -38,6 +40,7 @@ export class Potzblitz {
     // @ number
     this._componentMap.set("number", async (k: Annotation) => {
       return this.wrap(
+        k,
         "number",
         NumberInputField({
           label: k.key,
@@ -50,6 +53,7 @@ export class Potzblitz {
     // @ boolean
     this._componentMap.set("boolean", async (k: Annotation) => {
       return this.wrap(
+        k,
         "boolean",
         Toggle({
           label: k.key,
@@ -62,6 +66,7 @@ export class Potzblitz {
     // @ string
     this._componentMap.set("string", async (k: Annotation) => {
       return this.wrap(
+        k,
         "string",
         StringInputField({
           label: k.key,
@@ -74,6 +79,7 @@ export class Potzblitz {
     // @ slider
     this._componentMap.set("slider", async (k: Annotation) => {
       return this.wrap(
+        k,
         "slider",
         Slider({
           step: k.step,
@@ -89,6 +95,7 @@ export class Potzblitz {
     // @ colorpicker
     this._componentMap.set("colorpicker", async (k: Annotation) => {
       return this.wrap(
+        k,
         "colorpicker",
         ColorPicker({
           label: k.key,
@@ -101,6 +108,7 @@ export class Potzblitz {
     // @ colorselector
     this._componentMap.set("colorselector", async (k: Annotation) => {
       return this.wrap(
+        k,
         "colorselector",
         ColorSelector({
           label: k.key,
@@ -113,6 +121,7 @@ export class Potzblitz {
     // @ select
     this._componentMap.set("select", async (k: Annotation) => {
       return this.wrap(
+        k,
         "select",
         Select({
           label: k.key,
@@ -133,11 +142,15 @@ export class Potzblitz {
     this._stateAtom.resetIn(keyPath, v);
   }
 
-  private wrap(compType, com) {
+  private wrap(k, compType, com) {
     return [
       "div.component",
       {
-        class: compType,
+        class: k
+          .getIsHidden()
+          .transform(
+            map((k) => (k ? "component hidden" : `component ${compType}`))
+          ),
       },
       com,
     ];
@@ -158,11 +171,21 @@ export class Potzblitz {
       // console.log(annotations);
       // console.log();
       // console.groupEnd();
+      const hideFn = annotations?.hide ? annotations.hide : () => false;
       const getValue = () => subStream.transform(pluck(key));
+      const getIsHidden = () => subStream.transform(map((s) => hideFn(s)));
       const setValue = function (v: any) {
         classRef.inputForKey([...path, key], v);
       };
-      return { mappedType, key, path, getValue, setValue, ...annotations };
+      return {
+        mappedType,
+        key,
+        path,
+        getValue,
+        setValue,
+        getIsHidden,
+        ...annotations,
+      };
     }
 
     return [
@@ -195,10 +218,7 @@ export class Potzblitz {
               // Ensure recursion
               object: async (k) => [
                 "div.subgroup",
-                {
-                  // @TODO
-                  // class: "hidden",
-                },
+                {},
                 this.subView(
                   fromViewUnsafe(this._stateAtom, { path: [...path, k.key] }),
                   [...path, k.key]
@@ -228,7 +248,15 @@ export class Potzblitz {
     this._stateAtom.reset(update);
   }
 
+  public onChange(key: string, cb: Function): void {
+    this._stateAtom.addWatch(key, () => cb());
+  }
+
   get state(): StateObject {
     return this._stateAtom.deref();
+  }
+
+  get stream(): Stream<StateObject> {
+    return this._stateStream;
   }
 }

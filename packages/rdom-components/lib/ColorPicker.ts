@@ -1,5 +1,6 @@
 import "@potzblitz/components/src/scss/ColorPicker.scss";
 import type { Stream } from "@thi.ng/rstream";
+import { uuid } from "@thi.ng/random";
 
 export interface ColorPickerProps {
   label?: string;
@@ -8,6 +9,7 @@ export interface ColorPickerProps {
 }
 
 export function ColorPicker(props: ColorPickerProps) {
+  const id = uuid();
   return [
     "div.colorpicker",
     {},
@@ -15,7 +17,7 @@ export function ColorPicker(props: ColorPickerProps) {
     [
       "input.input",
       {
-        id: props.label,
+        id,
         type: "color",
         value: props.value,
         onchange: (e: InputEvent) => {
@@ -26,7 +28,7 @@ export function ColorPicker(props: ColorPickerProps) {
     [
       "label.color-preview-wrapper",
       {
-        for: props.label,
+        for: id,
       },
       [
         "div.color-preview",
