@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.css",
   "scripts": {
+    "dev": "sass lib/potzblitz.scss dist/index.css --watch",
     "build": "sass lib/potzblitz.scss dist/index.css"
   },
   "keywords": [],
