@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import { UiRoot } from "@potzblitz/ui";
+import { Potzblitz } from "@potzblitz/rdom";
 
 enum WaveTypes {
   SINE = "sine",
@@ -23,22 +23,25 @@ synth.connect(fft);
 const settings = {
   start: () => synth.triggerAttack("C3"),
   stop: () => synth.triggerRelease(),
-  ["@volume.component"]: "slider",
-  ["@volume.min"]: -36,
-  ["@volume.max"]: 1,
-  ["@volume.step"]: 0.1,
   volume: 0,
-  ["@waveType.component"]: "select",
-  ["@waveType.options"]: Object.values(WaveTypes),
+  ["@volume"]: {
+    component: "slider",
+    min: -36,
+    max: 1,
+    step: 0.1,
+  },
   waveType: WaveTypes.SINE,
-  ["@change"]: () => {
-    synth.oscillator.type = settings.waveType;
-    synth.oscillator.volume.value = settings.volume;
+  ["@waveType"]: {
+    component: "select",
+    options: Object.values(WaveTypes),
   },
 };
 
-const ui = new UiRoot();
-ui.build("Synth", settings);
+const ui = new Potzblitz(settings);
+ui.onChange("waveType", () => {
+  synth.oscillator.type = ui.state.waveType;
+  synth.oscillator.volume.value = ui.state.volume;
+});
 
 const canvas = document.createElement("canvas");
 canvas.width = 800;
