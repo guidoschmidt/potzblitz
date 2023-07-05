@@ -1,10 +1,11 @@
 import "@potzblitz/styles/dist/index.css";
 import "@potzblitz/rdom-components/dist/style.css";
-import { Atom } from "@thi.ng/atom";
+import { Atom, History } from "@thi.ng/atom";
 import type { Path } from "@thi.ng/api";
 import { fromAtom, fromViewUnsafe, reactive, Stream } from "@thi.ng/rstream";
 import { pluck, map } from "@thi.ng/transducers";
 import { $list, $switch, $compile } from "@thi.ng/rdom";
+import { div } from "@thi.ng/hiccup-html";
 import {
   Slider,
   Button,
@@ -18,7 +19,7 @@ import {
 import { Annotation, StateObject } from "./api";
 
 export class Potzblitz {
-  private _stateAtom: Atom<StateObject> = undefined;
+  private _stateAtom: History<Atom<StateObject>> = undefined;
   private _stateStream: Stream<any> = undefined;
   private _componentMap: Map<string, any> = undefined;
 
@@ -132,7 +133,7 @@ export class Potzblitz {
       );
     });
 
-    this._stateAtom = new Atom(stateObject);
+    this._stateAtom = new History(new Atom(stateObject));
     this._stateStream = fromAtom(this._stateAtom);
     this.render();
   }
@@ -158,8 +159,54 @@ export class Potzblitz {
     ];
   }
 
+  private mainGroupTitle() {
+    return [
+      div(
+        {
+          class: "group-title main",
+          onclick: (e: PointerEvent) => {
+            const target = e.target as HTMLDivElement;
+            target?.parentElement.classList.toggle("hidden");
+          },
+        },
+        "UI"
+      ),
+      div(
+        { class: "history" },
+        Button({
+          label: "Undo",
+          onClick: () => this._stateAtom.undo(),
+        }),
+        Button({
+          label: "Redo",
+          onClick: () => this._stateAtom.redo(),
+        })
+      ),
+    ];
+  }
+
+  private groupTitle(path: string[], children = []) {
+    return [
+      div(
+        {
+          class: "group-title",
+          onclick: (e: PointerEvent) => {
+            const target = e.target as HTMLDivElement;
+            target?.parentElement.classList.toggle("hidden");
+          },
+        },
+        path.join("/"),
+        children
+      ),
+    ];
+  }
+
   // @TODO rename function
-  private subView(subStream: Stream<StateObject>, path: string[] = []) {
+  private subView(
+    groupTitle,
+    subStream: Stream<StateObject>,
+    path: string[] = []
+  ) {
     const classRef = this;
 
     function resolveUiData(key: string): { mappedType: string } & Annotation {
@@ -175,7 +222,7 @@ export class Potzblitz {
       // console.groupEnd();
       const hideFn = annotations?.hide ? annotations.hide : () => false;
       const getValue = () => subStream.transform(pluck(key));
-      const getIsHidden = () => subStream.transform(map((s) => hideFn(s)));
+      const getIsHidden = () => subStream.transform(map((s) => hideFn?.(s)));
       const setValue = function (v: any) {
         classRef.inputForKey([...path, key], v);
       };
@@ -190,19 +237,9 @@ export class Potzblitz {
       };
     }
 
-    return [
-      "div.group",
-      {},
-      [
-        "div.group-title",
-        {
-          onclick: (e: PointerEvent) => {
-            const target = e.target as HTMLDivElement;
-            target?.parentElement.classList.toggle("hidden");
-          },
-        },
-        path.length === 0 ? "UI" : path.join("/"),
-      ],
+    return div(
+      { class: "group" },
+      ...groupTitle,
       $list(
         subStream.transform(
           map((s: any) =>
@@ -224,6 +261,7 @@ export class Potzblitz {
                   class: k.key,
                 },
                 this.subView(
+                  this.groupTitle([...path, k.key]),
                   fromViewUnsafe(this._stateAtom, { path: [...path, k.key] }),
                   [...path, k.key]
                 ),
@@ -231,19 +269,31 @@ export class Potzblitz {
             }
           );
         }
-      ),
-    ];
+      )
+    );
+
+    // [
+    //   "div.group",
+    //   {},
+    //   [
+    //     "div.group-title",
+    //     {
+    //     },
+    //     path.join("/"),
+    //   ],
+    // ];
   }
 
+  // @TODO add search
+  // ["input.searchfield", { placeholder: "Search", oninput: $input(searchTerm) }],
+  // ["h1", {}, searchTerm],
   private render() {
-    $compile([
-      "div.ui-root",
-      {},
-      // @TODO add search
-      // ["input.searchfield", { placeholder: "Search", oninput: $input(searchTerm) }],
-      // ["h1", {}, searchTerm],
-      this.subView(this._stateStream),
-    ]).mount(document.body);
+    $compile(
+      div(
+        { class: "ui-root" },
+        this.subView(this.mainGroupTitle(), this._stateStream)
+      )
+    ).mount(document.body);
   }
 
   public update(chunk) {
