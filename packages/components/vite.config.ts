@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     target: "esnext",
     lib: {
-      entry: resolve(__dirname, "src/solid/index.ts"),
-      name: "@potzblitz/components/solid",
+      entry: resolve(__dirname, "src/index.ts"),
+      name: "@potzblitz/components",
     },
     rollupOptions: {
       external: ["solid-js"],

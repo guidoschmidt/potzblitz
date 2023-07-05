@@ -21,11 +21,11 @@ export const state = {
             component: "colorpicker",
             hide: (s) => s.command !== "F" && s.command !== "f",
           },
-          forward: 10,
+          forward: 250,
           ["@forward"]: {
             component: "slider",
             min: 0,
-            max: 100,
+            max: 500,
             step: 1,
             hide: (s) => s.command !== "F" && s.command !== "f",
           },

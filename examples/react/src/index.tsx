@@ -1,54 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import {
   Button,
   Slider,
-  InputField,
   ColorPicker,
-  Potentiometer,
-  Select,
-} from "@potzblitz/components/src/react";
+  ColorSelector,
+} from "@potzblitz/react-components";
+import "@potzblitz/styles";
+import "./styles.scss";
+import "@potzblitz/react-components/dist/style.css";
 
-enum Shape {
-  RECTANGLE,
-  CIRCLE,
-  SQUARE,
-}
+const componentMap = new Map<string, any>();
+componentMap.set("number", Slider);
+componentMap.set("function", Button);
+componentMap.set("string", ColorSelector);
+
+const ViewState = ({ state }) => <code>{JSON.stringify(state)}</code>;
 
 function App() {
   const [state, updateState] = useState({
     slider: 0,
-    onButton: () => alert("Button!"),
+    save: () => alert("Save from Button!"),
     inputField: 10,
     color: "#ff0000",
   });
 
   return (
-    <div>
+    <React.Fragment>
       <h1>React Potzblitz</h1>
-      <Slider
-        label={"Slider"}
-        value={state.slider}
-        min={0}
-        max={1000}
-        step={1}
-        onUpdate={(v: number) =>
-          updateState((state) => {
-            state.slider = v;
-            return state;
-          })
-        }
-      />
-      <Button label="Test" />
-      <InputField value={state.inputField} />
-      <ColorPicker label="Color" value={state.color} />
-      <Potentiometer value={12} />
-      <Select
-        label="Shape"
-        value={Shape.CIRCLE}
-        options={Object.keys(Shape).filter((o) => isNaN(parseInt(o)))}
-      />
-    </div>
+      <div className="ui-root">
+        {Object.keys(state).map((key: string) => {
+          const value = state[key];
+          const nativeType = typeof state[key];
+          const Component = componentMap.get(nativeType) ?? (
+            <span>No Component</span>
+          );
+          return (
+            <div key={key}>
+              <Component
+                label={key}
+                value={value}
+                onClick={typeof value === "function" ? value : null}
+                onUpdate={(v) => {
+                  updateState((o) => {
+                    const update = { ...o };
+                    update[key] = v;
+                    return update;
+                  });
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      <ViewState state={state} />
+    </React.Fragment>
   );
 }
 

@@ -1,0 +1,19 @@
+{
+  "name": "@potzblitz/react-components",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.mjs",
+  "scripts": {
+    "dev": "vite build --watch --config vite.config.ts",
+    "build": "vite build --config vite.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "react": "^18.2.0",
+    "sass": "^1.63.4",
+    "vite": "^4.2.0"
+  }
+}
