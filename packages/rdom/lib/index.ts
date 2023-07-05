@@ -142,14 +142,16 @@ export class Potzblitz {
     this._stateAtom.resetIn(keyPath, v);
   }
 
-  private wrap(k, compType, com) {
+  private wrap(k: Annotation, compType: string, com: any) {
     return [
       "div.component",
       {
         class: k
           .getIsHidden()
           .transform(
-            map((k) => (k ? "component hidden" : `component ${compType}`))
+            map((x) =>
+              x ? "component hidden" : `component ${compType} ${k.key}`
+            )
           ),
       },
       com,
@@ -218,7 +220,9 @@ export class Potzblitz {
               // Ensure recursion
               object: async (k) => [
                 "div.subgroup",
-                {},
+                {
+                  class: k.key,
+                },
                 this.subView(
                   fromViewUnsafe(this._stateAtom, { path: [...path, k.key] }),
                   [...path, k.key]
