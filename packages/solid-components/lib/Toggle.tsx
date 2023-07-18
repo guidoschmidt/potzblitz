@@ -32,7 +32,7 @@ export function Toggle(props: solidToggleProps) {
       {mprops.label && <label>{camelCaseWithSpaces(mprops.label)}</label>}
       <div class="input-wrapper" onClick={handleSwitch}>
         <div classList={{ state: true, on: vO() }}>
-          <input type="checkbox" value={vO().toString()} />
+          <input type="checkbox" value={vO().toString()} checked={vO()} />
         </div>
       </div>
     </div>
