@@ -10,7 +10,7 @@
   @include ComponentLayout;
 
   input {
-    background: transparent;
+    background: var(--input-field--color-background);
     border: 0;
     outline: 0;
     flex-grow: 1;
@@ -40,13 +40,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    max-height: 100%;
-    opacity: 0.2;
+    flex-grow: 1;
     transition: opacity 200ms ease;
     &:hover {
-      opacity: 1.0;
-      color: var(--input-field--color-foreground) !important;
-      background: transparent !important;
+      color: var(--input-field--color-background) !important;
+      background: var(--input-field--color-foreground) !important;
     }
   }
 
