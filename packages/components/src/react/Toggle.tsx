@@ -20,7 +20,7 @@ export function Toggle(props: ToggleProps) {
       {props.label && <label>{camelCaseWithSpaces(props.label)}</label>}
       <div className="knob" onClick={handleSwitch}>
         <div className={["state", vO && "on"].join(" ")}>
-          <input type="checkbox" value={vO} />
+          <input type="checkbox" value={vO} checked={vO}/>
         </div>
       </div>
     </div>
