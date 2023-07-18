@@ -4,14 +4,16 @@
   "description": "",
   "main": "dist/index.mjs",
   "scripts": {
+    "dev": "vite build --config vite.config.ts --watch",
     "build": "vite build --config vite.config.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "solid-js": "^1.6.15",
-    "vite": "^4.2.0",
-    "vite-plugin-solid": "^2.6.1"
+    "sass": "^1.63.6",
+    "solid-js": "^1.7.8",
+    "vite": "^4.4.4",
+    "vite-plugin-solid": "^2.7.0"
   }
 }
