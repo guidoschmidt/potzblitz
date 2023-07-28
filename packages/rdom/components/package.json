@@ -1,15 +1,15 @@
 {
   "name": "@potzblitz/rdom-components",
-  "version": "0.0.1-alpha",
-  "description": "",
+  "version": "0.0.1",
+  "description": "custom thi.ng/rdom components",
   "main": "dist/index.mjs",
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Guido Schmidt <git@guidoschmidt.cc>",
+  "license": "MIT",
   "dependencies": {
     "@thi.ng/color": "^5.4.6",
     "@thi.ng/random": "^3.4.0",
