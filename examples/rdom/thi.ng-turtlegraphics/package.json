@@ -10,8 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@potzblitz/rdom": "^0.0.2",
+    "@potzblitz/rdom": "^0.0.1",
     "@thi.ng/api": "^8.7.6",
+    "@thi.ng/color": "^5.5.5",
     "@thi.ng/geom": "^5.0.0",
     "@thi.ng/matrices": "^2.1.52",
     "@thi.ng/rdom": "^0.11.0",

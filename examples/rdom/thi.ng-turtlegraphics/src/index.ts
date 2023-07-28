@@ -14,7 +14,7 @@ size.next(<any>null);
 
 const render = sync({ src: { state: ui.stream } }).transform(
   map(({ state }) => {
-    const { steps, repeat, centerX, centerY } = state;
+    const { steps, repeat, centerX, centerY, scale } = state;
     const [width, height] = size.deref();
     let pos = [centerX, centerY];
     let dir = [1, 0];
@@ -61,8 +61,8 @@ const render = sync({ src: { state: ui.stream } }).transform(
       {
         __clear: true,
         translate: [width * 0.5, height * 0.5],
+        scale: [scale, scale],
       },
-      ["circle", { fill: "#000" }, pos, 5],
       ...drawing,
     ];
   })
