@@ -1,0 +1,45 @@
+@import "./Common";
+
+.colorpicker {
+  --colorpicker--size: 20px;
+  --colorpicker--border-radius: 100%;
+
+  @include ComponentLayout;
+  
+  &:hover {
+    .color-preview-wrapper {
+      .color-preview {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  label {
+    @include LabelStyle;
+  }
+
+  input {
+    display: none;
+  }
+
+  .color-preview-wrapper {
+    align-items: center;
+    align-items: stretch;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 0;
+    transform: scale(1);
+    align-self: center;
+    .color-preview {
+      min-height: var(--colorpicker--size);
+      min-width: var(--colorpicker--size);
+      width: var(--colorpicker--size);
+      height: var(--colorpicker--size);
+      border-radius: var(--colorpicker--border-radius);
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 300ms ease, transform 300ms ease;
+    }
+  }
+}

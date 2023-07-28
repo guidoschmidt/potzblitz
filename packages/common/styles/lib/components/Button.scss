@@ -1,0 +1,57 @@
+@import "./Common.scss";
+
+.button-wrapper {
+  @include ComponentLayout;
+}
+
+.button {
+  --button-font: var(--potzblitz--font);
+  --button--font-size: var(--potzblitz--font-size);
+  --button--color-border: var(--potzblitz--color-foreground);
+  --button--color-background: var(--potzblitz--color-background);
+  --button--color-foreground: var(--potzblitz--color-foreground);
+  --button--color-hover-background: var(--potzblitz--color-foreground);
+  --button--color-hover-foreground: var(--potzblitz--color-background);
+  --button--padding: 10px;
+
+  --button--border-width: 1px;
+  --button--border-radius: 0;
+
+  width: 100%;
+  cursor: pointer;
+  font-family: var(--button--font);
+  font-size: var(--button--font-size);
+  flex-grow: 1;
+  text-transform: uppercase;
+  background: var(--button--color-background);
+  color: var(--button--color-foreground);
+  border: 0;
+  margin: 0;
+  padding: var(--button--padding);
+  border-radius: var(--button--border-radius);
+  border: var(--button--border-width) solid var(--button--color-border);
+  align-self: stretch;
+  justify-self: stretch;
+  height: 100%;
+
+  &:hover {
+    background: var(--button--color-hover-background) !important;
+    color: var(--button--color-hover-foreground) !important;
+  }
+
+  &:active,
+  &:focus {
+    border: 0;
+    outline: 0;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.1;
+    transform: rotate(180deg);
+    &:hover {
+      background: var(--button--color-background) !important;
+      color: var(--button--color-foreground) !important;
+    }
+  }
+}

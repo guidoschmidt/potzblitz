@@ -1,0 +1,26 @@
+@mixin LabelStyle() {
+  min-width: var(--potzblitz--label-min-width);
+  flex-grow: 1;
+  font-size: var(--potzblitz--fontsize);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  span {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+@mixin ComponentLayout() {
+  min-height: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-auto-rows: auto;
+  justify-content: stretch;
+  align-items: stretch;
+  align-self: stretch;
+  justify-self: stretch;
+}

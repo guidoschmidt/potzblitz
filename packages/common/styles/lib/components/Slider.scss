@@ -1,0 +1,166 @@
+// Referenz implementation:
+// Styling Cross-Browser Compatible Range Inputs with Sass
+// Github: https://github.com/darlanrod/input-range-sass
+// Author: Darlan Rod https://github.com/darlanrod
+@import "./Common.scss";
+
+.slider {
+  --slider--font: Monospace;
+  --slider--padding: 10px;
+
+  --slider--color-track: var(--potzblitz--color-foreground);
+  --slider--color-knob: var(--potzblitz--color-foreground);
+  --slider--color-knob-border: var(--potzblitz--color-foreground);
+
+  --slider--knob-border-width: 1px;
+  --slider--knob-width: 16px;
+  --slider--knob-height: var(--slider--knob-width);
+  --slider--knob-radius: var(--slider--knob-width);
+
+  --slider--track-height: 1px;
+  --slider--track-radius: 0px;
+  --slider--track-border-width: 0px;
+  --slider--track-border-color: transparent;
+
+  @include ComponentLayout;
+
+  label {
+    @include LabelStyle;
+  }
+
+  @mixin track {
+    cursor: default;
+    height: var(--slider--track-height);
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  @mixin thumb {
+    cursor: grabbing !important;
+    background: var(--slider--color-knob);
+    border-radius: var(--slider--knob-radius);
+    border: var(--slider--knob-border-width) solid var(--slider--color-knob-border);
+    box-sizing: border-box;
+    cursor: pointer;
+    height: var(--slider--knob-height);
+    width: var(--slider--knob-width);
+    transition: transform 200ms ease;
+  }
+
+  .slider-wrap {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .text-value {
+    font-weight: 200;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: var(--slider--knob-height);
+    margin: 8px 0;
+
+    &:hover {
+      &::-moz-range-thumb,
+      &::-webkit-slider-thumb {
+        // transform: scaleY(1.5);
+      }
+    }
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &:focus {
+      outline: 0;
+
+      &::-webkit-slider-runnable-track {
+        background: var(--slider--color-track);
+      }
+
+      &::-ms-fill-lower {
+        background: var(--slider--color-track);
+      }
+
+      &::-ms-fill-upper {
+        background: var(--slider--color-track);
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include track;
+      background: var(--slider--color-track);
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: var(--slider--track-radius);
+    }
+
+    &::-webkit-slider-thumb {
+      @include thumb;
+      -webkit-appearance: none;
+      margin-top: calc(
+        -0.5 * (var(--slider--knob-height) - var(--slider--track-height)) + -1 *
+          var(--slider--track-border-width)
+      );
+    }
+
+    &::-moz-range-track {
+      @include track;
+      box-sizing: border-box;
+      background: var(--slider--color-track);
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: var(--slider--track-radius);
+      height: var(--slider--track-height);
+    }
+
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+
+    &::-ms-track {
+      @include track;
+      background: transparent;
+      border-color: transparent;
+      border-width: (var(--slider--knob-height) / 2) 0;
+      color: transparent;
+    }
+
+    &::-ms-fill-lower {
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: calc(var(--slider--track-radius) * 2);
+    }
+
+    &::-ms-fill-upper {
+      background: var(--slider--color-track);
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: calc(var(--slider--track-radius) * 2);
+    }
+
+    &::-ms-thumb {
+      @include thumb;
+      margin-top: calc(var(--slider--track-height) / 4);
+    }
+
+    &:disabled {
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb,
+      &::-ms-thumb,
+      &::-webkit-slider-runnable-track,
+      &::-ms-fill-lower,
+      &::-ms-fill-upper {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

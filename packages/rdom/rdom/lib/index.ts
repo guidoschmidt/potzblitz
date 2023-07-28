@@ -19,7 +19,7 @@ import {
 import { Annotation, StateObject } from "./api";
 
 export class Potzblitz {
-  private _stateAtom: History<Atom<StateObject>> = undefined;
+  private _stateAtom: History<StateObject> = undefined;
   private _stateStream: Stream<any> = undefined;
   private _componentMap: Map<string, any> = undefined;
 
@@ -46,6 +46,9 @@ export class Potzblitz {
         NumberInputField({
           label: k.key,
           value: k.getValue(),
+          step: k.step,
+          min: k.min,
+          max: k.max,
           onInput: (v: number) => k.setValue(v),
         })
       );
@@ -256,9 +259,15 @@ export class Potzblitz {
               ...Object.fromEntries(this._componentMap),
               // Ensure recursion
               object: async (k) => [
-                "div.subgroup",
+                "div",
                 {
-                  class: k.key,
+                  class: k
+                    .getIsHidden()
+                    .transform(
+                      map((x) =>
+                        x ? `subgroup hidden ${k.key}` : `subgroup ${k.key}`
+                      )
+                    ),
                 },
                 this.subView(
                   this.groupTitle([...path, k.key]),

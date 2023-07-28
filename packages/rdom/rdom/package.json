@@ -1,0 +1,26 @@
+{
+  "name": "@potzblitz/rdom",
+  "version": "0.0.1",
+  "description": "Object to UI builder based on thi.ng/rdom",
+  "main": "dist",
+  "types": "types/",
+  "scripts": {
+    "dev": "vite build --config vite.config.ts --watch",
+    "build": "tsc && vite build --config vite.config.ts"
+  },
+  "keywords": ["ui", "generative", "thi.ng", "rdom"],
+  "author": "Guido Schmidt <git@guidoschmidt.cc>",
+  "license": "MIT",
+  "dependencies": {
+    "@thi.ng/api": "^8.8.2",
+    "@thi.ng/atom": "^5.2.3",
+    "@thi.ng/hiccup-html": "^2.2.16",
+    "@thi.ng/rdom": "^0.11.4",
+    "@thi.ng/rstream": "^8.0.4",
+    "@thi.ng/transducers": "^8.4.6",
+    "@types/node": "^20.3.3",
+    "sass": "^1.63.6",
+    "typescript": "^5.1.6",
+    "vite": "^4.3.9"
+  }
+}

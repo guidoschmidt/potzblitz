@@ -9,6 +9,8 @@ export declare class Potzblitz {
     constructor(stateObject: StateObject);
     private inputForKey;
     private wrap;
+    private mainGroupTitle;
+    private groupTitle;
     private subView;
     private render;
     update(chunk: any): void;

@@ -1,0 +1,59 @@
+@import "./Common.scss";
+
+.toggle {
+  --toggle--font: Monospace;
+  --toggle--padding: 10px;
+  --toggle--border-radius: 10px;
+
+  --toggle--color-on: var(--potzblitz--color-foreground);
+
+  --toggle--size: 14px;
+
+  @include ComponentLayout;
+
+  label {
+    @include LabelStyle;
+  }
+
+  .input-wrapper {
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    transition: outline 50ms ease;
+    cursor: pointer;
+    border-radius: 0;
+    margin: var(--toggle--padding);
+    &:hover {
+      .state {
+        opacity: 0.5;
+      }
+    }
+
+    input {
+      display: none;
+      pointer-events: none;
+    }
+
+    .state {
+      width: var(--toggle--size);
+      height: var(--toggle--size);
+      position: relative;
+      border: 1px solid var(--potzblitz--color-foreground);
+      border-radius: var(--toggle--border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      background: var(--potzblitz--color-foreground);
+      &.on {
+        opacity: 1.0;
+      }
+      &.off {
+        opacity: 0.2;
+      }
+    }
+  }
+}
