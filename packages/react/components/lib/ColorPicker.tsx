@@ -1,13 +1,13 @@
-import "@potzblitz/components/src/scss/ColorPicker.scss";
-import { ColorPickerProps, uniqueName } from "@potzblitz/components/src/api";
+import "@potzblitz/styles/lib/components/ColorPicker.scss";
+import { api } from "@potzblitz/components";
 import React, { useState } from "react";
 
-export interface ReactColorPickerProps extends ColorPickerProps {
+export interface ReactColorPickerProps extends api.ColorPickerProps {
   value: string;
 }
 
 export function ColorPicker(props: ReactColorPickerProps) {
-  const [idStr, _id] = uniqueName(props.label);
+  const [idStr, _id] = api.uniqueName(props.label);
   const [vO, setVO] = useState<string>(props.value);
 
   const handleColorChange = (e: InputEvent) => {

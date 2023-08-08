@@ -1,11 +1,11 @@
-import "@potzblitz/components/src/scss/InputField.scss";
+import "@potzblitz/styles/lib/components/InputField.scss";
 import React, { useState, useEffect } from "react";
 import {
   uniqueName,
   InputFieldProps,
   NumberInputFieldProps,
   TextInputFieldProps,
-} from "../../components/src/api";
+} from "@potzblitz/components/src/api";
 
 export interface ReactInputFieldProps extends InptuFieldProps {
   value: string | number;

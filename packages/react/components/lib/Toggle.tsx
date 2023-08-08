@@ -1,4 +1,4 @@
-import "@potzblitz/components/src/scss/Toggle.scss";
+import "@potzblitz/styles/lib/components/Toggle.scss";
 import React, { useState, useEffect } from "react";
 import { api } from "@potzblitz/components";
 

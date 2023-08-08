@@ -1,4 +1,4 @@
-import "@potzblitz/components/src/scss/ColorSelector.scss";
+import "@potzblitz/styles/lib/components/ColorSelector.scss";
 import React, { useState } from "react";
 import { uniqueName } from "@potzblitz/components/src/api";
 

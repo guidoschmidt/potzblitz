@@ -1,4 +1,4 @@
-import "@potzblitz/components/src/scss/Potentiometer.scss";
+import "@potzblitz/styles/lib/components/Potentiometer.scss";
 import React, { useState, useRef } from "react";
 import { api } from "@potzblitz/components";
 import { AdditionalValueInput } from "./blocks";

@@ -1,9 +1,9 @@
-import "../scss/Select.scss";
+import "@potzblitz/styles/lib/components/Select.scss";
 import React, { useState } from "react";
-import { SelectProps, uniqueName } from "../api";
+import { api } from "@potzblitz/components";
 
-export function Select<T>(props: SelectProps<T>) {
-  const [idStr, _id] = uniqueName(props.label);
+export function Select<T>(props: api.SelectProps<T>) {
+  const [idStr, _id] = api.uniqueName(props.label);
   const [vO, setVO] = useState(props.value);
   const [showOptions, setShowOptions] = useState(false);
 

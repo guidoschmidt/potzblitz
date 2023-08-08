@@ -1,4 +1,4 @@
-import "@potzblitz/components/src/scss/Slider.scss";
+import "@potzblitz/styles/lib/components/Slider.scss";
 import React, { useState, useEffect } from "react";
 import { api } from "@potzblitz/components";
 import { AdditionalValueInput } from "./blocks";

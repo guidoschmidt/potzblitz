@@ -14,6 +14,12 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "react",
+          "react-dom": "react-dom",
+        },
+      },
     },
   },
 });

@@ -1,4 +1,4 @@
-import "@potzblitz/components/src/scss/Button.scss";
+import "@potzblitz/styles/lib/components/Button.scss";
 import React from "react";
 import { api } from "@potzblitz/components";
 

@@ -7,10 +7,11 @@
     "dev": "vite build --watch --config vite.config.ts",
     "build": "vite build --config vite.config.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "ui", "components"],
+  "author": "Guido Schmidt <git@guidoschmidt.cc>",
+  "license": "MIT",
   "dependencies": {
+    "@types/node": "^20.4.8",
     "@vitejs/plugin-react": "^4.0.0",
     "react": "^18.2.0",
     "sass": "^1.63.4",
