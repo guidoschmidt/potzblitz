@@ -1,5 +1,5 @@
-import "@potzblitz/components/src/scss/Potentiometer.scss";
-import { PotentiometerProps, uniqueName } from "@potzblitz/components/src/api";
+import "@potzblitz/styles/lib/components/Potentiometer.scss";
+import { PotentiometerProps, uniqueName } from "@potzblitz/api";
 import {
   mergeProps,
   createSignal,
@@ -13,7 +13,7 @@ export function Potentiometer(props: PotentiometerProps) {
   let knobWrapperRef: HTMLDivElement;
   const mprops: PotentiometerProps = mergeProps(
     { value: 0.0, min: 0.0, max: 100.0, step: 1.0, onUpdate: () => {} },
-    props
+    props,
   );
 
   const [idStr, _id] = uniqueName(mprops.label);
@@ -34,7 +34,7 @@ export function Potentiometer(props: PotentiometerProps) {
     const length = Math.sqrt(vec[0] * vec[0] + vec[1] * vec[1]);
     if (length < 5.0) return;
     const angle = Math.round(
-      ((Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI)) / 3.6
+      ((Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI)) / 3.6,
     );
     setVO(angle);
     mprops.onUpdate && mprops.onUpdate(angle);

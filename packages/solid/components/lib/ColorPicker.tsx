@@ -1,5 +1,5 @@
-import "@potzblitz/components/src/scss/ColorPicker.scss";
-import { ColorPickerProps, uniqueName } from "@potzblitz/components/src/api";
+import "@potzblitz/styles/lib/components/ColorPicker.scss";
+import { ColorPickerProps, uniqueName } from "@potzblitz/api";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { CopyValueButton, ValueView } from "./blocks";
 

@@ -1,5 +1,5 @@
-import "@potzblitz/components/src/scss/ColorSelector.scss";
-import { ColorSelectorProps, uniqueName } from "@potzblitz/components/src/api";
+import "@potzblitz/styles/lib/components/ColorSelector.scss";
+import { ColorSelectorProps, uniqueName } from "@potzblitz/api";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { ValueView } from "./blocks";
 
@@ -43,7 +43,7 @@ export function ColorSelector(props: solidColorSelectorProps) {
   createEffect(() => {
     ref?.style.setProperty(
       "--hue-current",
-      `${Math.round(colorValues()[0] * 3.6)} `
+      `${Math.round(colorValues()[0] * 3.6)} `,
     );
   });
 

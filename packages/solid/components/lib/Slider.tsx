@@ -1,5 +1,5 @@
-import "@potzblitz/components/src/scss/Slider.scss";
-import { SliderProps, uniqueName } from "@potzblitz/components/src/api";
+import "@potzblitz/styles/lib/components/Slider.scss";
+import { SliderProps, uniqueName } from "@potzblitz/api";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { CopyValueButton, ValueView } from "./blocks";
 
@@ -14,7 +14,7 @@ export function Slider(props: SliderProps) {
       onBlur: () => {},
       showCopyButton: false,
     },
-    props
+    props,
   );
 
   const [idStr, _id] = uniqueName(mprops.label);

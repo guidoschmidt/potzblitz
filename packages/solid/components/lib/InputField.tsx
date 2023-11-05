@@ -1,10 +1,10 @@
-import "@potzblitz/components/src/scss/InputField.scss";
+import "@potzblitz/styles/lib/components/InputField.scss";
 import {
   uniqueName,
   InputFieldProps,
   NumberInputFieldProps,
   TextInputFieldProps,
-} from "@potzblitz/components/src/api";
+} from "@potzblitz/api";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { CopyValueButton } from "./blocks";
 
@@ -56,7 +56,7 @@ export function StringInputField(props: solidInputFieldProps<string>) {
       min: -Infinity,
       max: +Infinity,
     },
-    props
+    props,
   );
   const [idStr, _id] = uniqueName(mprops.label);
   const [vO, setVO] = createSignal(mprops.value);
@@ -108,7 +108,7 @@ export function NumberInputField(props: solidInputFieldProps<number>) {
       min: -Infinity,
       max: +Infinity,
     },
-    props
+    props,
   );
   const [idStr, _id] = uniqueName(mprops.label);
   const [vO, setVO] = createSignal(mprops.value);

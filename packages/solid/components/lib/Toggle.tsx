@@ -1,8 +1,5 @@
-import "@potzblitz/components/src/scss/Toggle.scss";
-import {
-  camelCaseWithSpaces,
-  ToggleProps,
-} from "@potzblitz/components/src/api";
+import "@potzblitz/styles/lib/components/Toggle.scss";
+import { camelCaseWithSpaces, ToggleProps } from "@potzblitz/api";
 import { createSignal, mergeProps, createEffect } from "solid-js";
 
 interface solidToggleProps extends ToggleProps {
@@ -12,7 +9,7 @@ interface solidToggleProps extends ToggleProps {
 export function Toggle(props: solidToggleProps) {
   const mprops: solidToggleProps = mergeProps(
     { value: false, onChange: () => {} },
-    props
+    props,
   );
 
   const [vO, setVO] = createSignal(props.value);
