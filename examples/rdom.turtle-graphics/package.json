@@ -1,0 +1,25 @@
+{
+  "name": "@potzblitz/examples-rdom",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@potzblitz/rdom": "^0.0.2",
+    "@thi.ng/api": "^8.7.6",
+    "@thi.ng/geom": "^5.0.0",
+    "@thi.ng/matrices": "^2.1.52",
+    "@thi.ng/rdom": "^0.11.0",
+    "@thi.ng/rdom-canvas": "^0.5.0",
+    "@thi.ng/rstream": "^8.0.0",
+    "@thi.ng/transducers": "^8.4.2",
+    "@thi.ng/vectors": "^7.6.11",
+    "sass": "^1.61.0",
+    "vite": "^4.2.1"
+  }
+}

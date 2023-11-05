@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "es2020",
+    "moduleResolution": "node",
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    "rootDir": "./lib"
+  },
+  "include": ["lib/**/*"],
+  "exclude": ["./node_modules"]
+}
