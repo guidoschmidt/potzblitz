@@ -1,4 +1,4 @@
-import "@potzblitz/styles/lib/components/Potentiometer.scss";
+// import "@potzblitz/styles/lib/components/Potentiometer.scss";
 import { PotentiometerProps, uniqueName } from "@potzblitz/api";
 import {
   mergeProps,

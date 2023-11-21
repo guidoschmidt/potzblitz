@@ -1,4 +1,4 @@
-import "@potzblitz/styles/lib/components/Select.scss";
+// import "@potzblitz/styles/lib/components/Select.scss";
 import { SelectProps, uniqueName } from "@potzblitz/api";
 import { For, mergeProps, createSignal, createEffect } from "solid-js";
 import { CopyValueButton } from "./blocks";

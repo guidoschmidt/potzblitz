@@ -5,15 +5,30 @@
   "main": "dist/index.mjs",
   "scripts": {
     "dev": "vite build --config vite.config.ts --watch",
-    "build": "vite build --config vite.config.ts"
+    "build": "vite build --config vite.config.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sass": "^1.63.6",
-    "solid-js": "^1.7.8",
-    "vite": "^4.4.4",
-    "vite-plugin-solid": "^2.7.0"
+    "sass": "^1.69.5",
+    "solid-js": "^1.8.5",
+    "vite": "^4.5.0",
+    "vite-plugin-solid": "^2.7.2"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.0-alpha.6",
+    "@storybook/addon-interactions": "^7.6.0-alpha.6",
+    "@storybook/addon-links": "^7.6.0-alpha.6",
+    "@storybook/blocks": "^7.6.0-alpha.6",
+    "@storybook/testing-library": "^0.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.6.0-alpha.6",
+    "storybook-dark-mode": "^3.0.1",
+    "storybook-solidjs": "^1.0.0-beta.2",
+    "storybook-solidjs-vite": "^1.0.0-beta.2"
   }
 }

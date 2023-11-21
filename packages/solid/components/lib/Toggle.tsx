@@ -1,4 +1,4 @@
-import "@potzblitz/styles/lib/components/Toggle.scss";
+// import "@potzblitz/styles/lib/components/Toggle.scss";
 import { camelCaseWithSpaces, ToggleProps } from "@potzblitz/api";
 import { createSignal, mergeProps, createEffect } from "solid-js";
 

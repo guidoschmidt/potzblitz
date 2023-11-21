@@ -1,4 +1,4 @@
-import "@potzblitz/styles/lib/components/Button.scss";
+// import "@potzblitz/styles/lib/components/Button.scss";
 import { mergeProps } from "solid-js";
 import { ButtonProps, camelCaseWithSpaces } from "@potzblitz/api";
 
