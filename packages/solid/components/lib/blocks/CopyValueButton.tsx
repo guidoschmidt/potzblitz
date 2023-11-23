@@ -1,4 +1,4 @@
-// import "@potzblitz/styles/lib/blocks/CopyValueButton.scss";
+import "@potzblitz/styles/lib/blocks/CopyValueButton.scss";
 import { copyValue } from "@potzblitz/api";
 
 export function CopyValueButton(props: { value: any }) {

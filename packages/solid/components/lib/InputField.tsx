@@ -1,4 +1,4 @@
-// import "@potzblitz/styles/lib/components/InputField.scss";
+import "@potzblitz/styles/lib/components/InputField.scss";
 import {
   uniqueName,
   InputFieldProps,

@@ -2,7 +2,6 @@
 
 .inputfield {
   --input-field--font-size: var(--potzblitz--font-size);
-  --input-field--font: var(--potzblitz--font);
   --input-field--padding: 10px;
   --input-field--color-background: var(--potzblitz--color-background);
   --input-field--color-foreground: var(--potzblitz--color-foreground);
@@ -54,7 +53,7 @@
     min-width: 10ch;
     text-align: center;
     font-size: var(--input-field--font-size);
-    font-family: var(--input-field--font);
+    font-family: var(--potzblitz--font);
     // background: var(--input-field--color-background);
   }
 
@@ -64,7 +63,7 @@
     border-bottom: var(--text--border-width) solid
       var(--input-field--color-foreground);
     font-size: var(--input-field--font-size);
-    font-family: var(--input-field--font);
+    font-family: var(--potzblitz--font);
     // background: var(--input-field--color-background);
 
     &:focus {

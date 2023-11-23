@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@potzblitz/styles": "workspace:^",
     "sass": "^1.69.5",
     "solid-js": "^1.8.5",
     "vite": "^5.0.2",

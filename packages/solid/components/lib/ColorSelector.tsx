@@ -1,4 +1,4 @@
-// import "@potzblitz/styles/lib/components/ColorSelector.scss";
+import "@potzblitz/styles/lib/components/ColorSelector.scss";
 import { ColorSelectorProps, uniqueName } from "@potzblitz/api";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { ValueView } from "./blocks";

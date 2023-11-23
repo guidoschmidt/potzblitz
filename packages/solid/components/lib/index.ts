@@ -1,3 +1,5 @@
+import "@potzblitz/styles/lib/potzblitz.scss";
+
 export * from "./Button";
 export * from "./ColorPicker";
 export * from "./ColorSelector";

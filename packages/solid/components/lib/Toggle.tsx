@@ -1,4 +1,4 @@
-// import "@potzblitz/styles/lib/components/Toggle.scss";
+import "@potzblitz/styles/lib/components/Toggle.scss";
 import { camelCaseWithSpaces, ToggleProps } from "@potzblitz/api";
 import { createSignal, mergeProps, createEffect } from "solid-js";
 
@@ -28,7 +28,7 @@ export function Toggle(props: solidToggleProps) {
     <div class="toggle">
       {mprops.label && <label>{camelCaseWithSpaces(mprops.label)}</label>}
       <div class="input-wrapper" onClick={handleSwitch}>
-        <div classList={{ state: true, on: vO() }}>
+        <div classList={{ state: true, on: vO(), off: !vO() }}>
           <input type="checkbox" value={vO().toString()} checked={vO()} />
         </div>
       </div>

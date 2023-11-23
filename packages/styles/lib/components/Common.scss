@@ -1,7 +1,8 @@
 @mixin LabelStyle() {
   min-width: var(--potzblitz--label-min-width);
   flex-grow: 1;
-  font-size: var(--potzblitz--fontsize);
+  font-family: var(--potzblitz--font-labels);
+  font-size: var(--potzblitz--fontsize-labels);
   text-transform: uppercase;
   display: flex;
   align-items: center;

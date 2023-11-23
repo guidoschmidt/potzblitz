@@ -1,6 +1,6 @@
 .value-view {
-  font-family: monospace;
-  font-size: 10px;
+  font-family: var(--potzblitz--font);
+  font-size: var(--potzblitz--font-size);
   display: flex;
   justify-content: center;
   align-items: center;

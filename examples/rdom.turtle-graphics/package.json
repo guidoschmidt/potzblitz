@@ -1,5 +1,5 @@
 {
-  "name": "@potzblitz/examples-rdom",
+  "name": "rdom.turtle-graphics",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@potzblitz/rdom": "^0.0.2",
     "@thi.ng/api": "^8.7.6",
     "@thi.ng/geom": "^5.0.0",
     "@thi.ng/matrices": "^2.1.52",

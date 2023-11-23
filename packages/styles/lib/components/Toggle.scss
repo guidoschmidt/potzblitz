@@ -48,6 +48,7 @@
       align-items: center;
       pointer-events: none;
       background: var(--potzblitz--color-foreground);
+      transition: opacity 500ms ease;
       &.on {
         opacity: 1.0;
       }

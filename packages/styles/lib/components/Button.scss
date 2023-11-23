@@ -5,8 +5,6 @@
 }
 
 .button {
-  --button-font: var(--potzblitz--font);
-  --button--font-size: var(--potzblitz--font-size);
   --button--color-border: var(--potzblitz--color-foreground);
   --button--color-background: var(--potzblitz--color-background);
   --button--color-foreground: var(--potzblitz--color-foreground);
@@ -19,8 +17,8 @@
 
   width: 100%;
   cursor: pointer;
-  font-family: var(--button--font);
-  font-size: var(--button--font-size);
+  font-family: var(--potzblitz--font);
+  font-size: var(--potzblitz--font-size);
   flex-grow: 1;
   text-transform: uppercase;
   background: var(--button--color-background);

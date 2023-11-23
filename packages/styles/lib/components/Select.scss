@@ -22,6 +22,7 @@
 
   .selected {
     color: var(--select--color-foreground);
+    backgckground-color: var(--select--color-background);
     font-family: var(--select--font);
     display: flex;
     justify-content: center;

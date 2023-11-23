@@ -1,4 +1,4 @@
-// import "@potzblitz/styles/lib/components/Slider.scss";
+import "@potzblitz/styles/lib/components/Slider.scss";
 import { SliderProps, uniqueName } from "@potzblitz/api";
 import { mergeProps, createSignal, createEffect } from "solid-js";
 import { CopyValueButton, ValueView } from "./blocks";
@@ -17,19 +17,22 @@ export function Slider(props: SliderProps) {
     props,
   );
 
+  const precision = (v: number, prec: number) =>
+    Number(v.toFixed(String(prec).length - 2));
+
   const [idStr, _id] = uniqueName(mprops.label);
-  const [vO, setVO] = createSignal(mprops.value);
+  const [vO, setVO] = createSignal(precision(mprops.value, mprops.step));
 
   const handleInput = (e: InputEvent | PointerEvent): number => {
     const target = e.target as HTMLInputElement;
     const value = target.value;
-    const newValue = parseFloat(value);
+    const newValue = precision(parseFloat(value), mprops.step);
     setVO(newValue);
     return newValue;
   };
 
   createEffect(() => {
-    setVO(mprops.value);
+    setVO(precision(mprops.value, mprops.step));
   });
 
   return (

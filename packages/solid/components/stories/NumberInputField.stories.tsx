@@ -12,9 +12,9 @@ const meta = {
 
 export default meta;
 
-export const StringInput = {
+export const NumberInput = {
   args: {
-    label: "String",
+    label: "Number Input",
     value: 42,
   },
 };
